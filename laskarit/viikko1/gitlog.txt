@@ -94,3 +94,5 @@ Date:   Mon Oct 26 18:38:05 2020 +0200
  tiedosto.txt | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
 ~/ot_viikko1/tiedostoja >>>                                  ±[master]
+
+Change on Github
