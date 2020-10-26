@@ -1,6 +1,5 @@
-# Test1
-111
-## Test2
-222
-### Test3
-333
+# Ohjelmistotekniikka, harjoitustyö
+## Tehtävät
+### Viikko 1
+[gitlog.txt](https://github.com/lapptomi/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+[komentorivi.txt](https://github.com/lapptomi/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
