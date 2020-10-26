@@ -1,0 +1,96 @@
+~/ot_viikko1/tiedostoja >>> git log --stat | cat             ±[master]
+commit 2bd4b9806ff2bd7856de6b1cdb2abd898cb3fb50
+Author: lapptomi <lappetelainen.tomi@gmail.com>
+Date:   Mon Oct 26 19:11:18 2020 +0200
+
+    file1 poistettu ja file2 nimi muutettu
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 65d9ebe5004c67f335456b0c86b4237c52f1ed76
+Author: lapptomi <lappetelainen.tomi@gmail.com>
+Date:   Mon Oct 26 19:06:51 2020 +0200
+
+    hakemisto ja tiedostoja lisätty
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit cf2abff186f8eb92e16375101aa19ee1f27ff47c
+Author: lapptomi <lappetelainen.tomi@gmail.com>
+Date:   Mon Oct 26 18:59:53 2020 +0200
+
+    kolmas.txt ja eka.txt tekstiä muutettu
+
+ eka.txt    | 4 +---
+ kolmas.txt | 1 +
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+commit ddc2948d63308f3a0d7eeb9e368373b70f9afbdd
+Author: lapptomi <lappetelainen.tomi@gmail.com>
+Date:   Mon Oct 26 18:57:30 2020 +0200
+
+    tiedosto.txt nimi muutettu
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit afc7a45ce614885acb0c26bb410c4c35a1244042
+Author: lapptomi <lappetelainen.tomi@gmail.com>
+Date:   Mon Oct 26 18:54:10 2020 +0200
+
+    tiedosto toinen.txt poistettu
+
+ toinen.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 22bd70edd8c6667658cceffbee14e209142fdf2b
+Author: lapptomi <lappetelainen.tomi@gmail.com>
+Date:   Mon Oct 26 18:52:30 2020 +0200
+
+    paljon tekstiä lisätty
+
+ tiedosto.txt | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+commit 905f078a4c7736b4e202dea1a98423d4889673b1
+Author: lapptomi <lappetelainen.tomi@gmail.com>
+Date:   Mon Oct 26 18:44:13 2020 +0200
+
+    randomtiedosto lisätty
+
+ stuff/randomtiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 189d8f3c807f0ed1648eb2bcb10e4b329b87299d
+Author: lapptomi <lappetelainen.tomi@gmail.com>
+Date:   Mon Oct 26 18:43:04 2020 +0200
+
+    kolmas.txt lisätty
+
+ kolmas.txt | 0
+ toinen.txt | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 54235af5de15bc2b65143bc7501647127357838e
+Author: lapptomi <lappetelainen.tomi@gmail.com>
+Date:   Mon Oct 26 18:39:37 2020 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 29ede3df2c4743b2756b0ff844cdb1e07524860f
+Author: lapptomi <lappetelainen.tomi@gmail.com>
+Date:   Mon Oct 26 18:38:05 2020 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+~/ot_viikko1/tiedostoja >>>                                  ±[master]
