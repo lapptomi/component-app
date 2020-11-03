@@ -103,9 +103,7 @@ public class KassapaateTest {
         kassapaate.syoMaukkaasti(kateinen);
         assertEquals(0, kassapaate.maukkaitaLounaitaMyyty());
     }
-
-    // Korttiosto toimii sekä edullisten että maukkaiden lounaiden osalta
-
+    
     @Test
     public void syoEdullisestiVeloittaaOikeanMaaranRahaaKortilta() {
         int kortillaRahaaEnnenOstoa = maksukortti.saldo();
