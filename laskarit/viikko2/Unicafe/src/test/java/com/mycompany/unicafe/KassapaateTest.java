@@ -103,7 +103,7 @@ public class KassapaateTest {
         kassapaate.syoMaukkaasti(kateinen);
         assertEquals(0, kassapaate.maukkaitaLounaitaMyyty());
     }
-    
+
     @Test
     public void syoEdullisestiVeloittaaOikeanMaaranRahaaKortilta() {
         int kortillaRahaaEnnenOstoa = maksukortti.saldo();
