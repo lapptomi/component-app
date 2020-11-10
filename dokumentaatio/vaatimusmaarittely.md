@@ -45,7 +45,7 @@ Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seura
 - käyttäjä voi hakea komponentteja tietokannasta annettujen tietojen perusteella
 
 - kolme eri käyttäjäroolia, jotka ovat owner, normal sekä read
-  - roolilla owner on oikeudet kaikkiin toimintoihin, kuten muokata tietokannan käyttäjien rooleja sekä lisätä ja muokata tietokannassa olevaa tietoa
+  - roolilla owner on oikeudet kaikkiin toimintoihin, kuten muokata tietokannan käyttäjien rooleja sekä lisätä, muokata ja poistaa tietokannassa olevaa tietoa
   - roolilla normal on oikeudet tietokannan sisällön muokkaamiseen, lisäämiseen ja poistamiseen
   - roolilla read on oikeudet vain tietokannan tarkasteluun
   
