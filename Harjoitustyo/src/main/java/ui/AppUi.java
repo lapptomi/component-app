@@ -1,7 +1,7 @@
 package ui;
 
-import domain.Database;
 import domain.User;
+import domain.UserService;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -13,19 +13,15 @@ public class AppUi extends Application {
 
     private final RegisterPage registerPage = new RegisterPage();
     private final LoginPage loginPage = new LoginPage();
+    private UserService userService;
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setTitle("Login");
+        this.userService = new UserService();
 
-        // Database connectionType 1 runs database in memory
-        // Database connectionType 2 runs database in file "testi.db"
-        Database database = new Database(1);
-        if (database.getAll().size() == 0) {
-            database.initializeDatabase();
-        }
-        for (User user : database.getAll()) {
-            System.out.println(user.getUsername()+" "+user.getPassword());
+        stage.setTitle("Login");
+        if (userService.getAll().size() == 0) {
+            userService.addTestUsers();
         }
 
         // Login page
@@ -38,6 +34,7 @@ public class AppUi extends Application {
             String username = loginPage.usernameField.getText();
             String password = loginPage.passwordField.getText();
             System.out.println(username+" "+password);
+            loginPage.alert.showAndWait();
         });
         loginPage.registerPageButton.setOnAction(event -> {
             stage.setScene(registerPageScene);
@@ -50,9 +47,9 @@ public class AppUi extends Application {
         registerPage.createUserButton.setOnAction(event -> {
             String username = registerPage.usernameField.getText();
             String password = registerPage.passwordField.getText();
-            System.out.println(username+" "+password);
-            database.addUser(new User(username, password));
+            userService.create(new User(username, password));
         });
+
 
         stage.setScene(loginPageScene);
         stage.show();

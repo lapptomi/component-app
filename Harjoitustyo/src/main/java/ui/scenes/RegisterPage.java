@@ -1,14 +1,12 @@
 package ui.scenes;
 
+import dao.UserDao;
 import domain.Database;
 import domain.User;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -18,7 +16,6 @@ public class RegisterPage extends GridPane {
 
     public Button returnButton = new Button("Return");
     public Button createUserButton = new Button("Register");
-
     public TextField usernameField = new TextField();
     public PasswordField passwordField = new PasswordField();
 
@@ -32,10 +29,8 @@ public class RegisterPage extends GridPane {
         registerPageTitle.setFont(Font.font(20));
         super.add(registerPageTitle, 1, 0, 3, 1);
 
-        Label username = new Label("Username:");
-        Label password = new Label("Password:");
-        super.add(username, 1,1);
-        super.add(password, 1, 2);
+        super.add(new Label("Username:"), 1,1);
+        super.add(new Label("Password:"), 1, 2);
 
         super.add(usernameField,2,1);
         super.add(passwordField, 2, 2);
