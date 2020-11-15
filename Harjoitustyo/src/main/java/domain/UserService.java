@@ -8,39 +8,31 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserService extends Database implements UserDao {
+public class UserService implements UserDao {
 
-    private final Statement statement;
-
-    public UserService() throws ClassNotFoundException, SQLException {
-        this.statement = super.getConnection().createStatement();
-    }
+    public static String loggedUser = null;
 
     @Override
     public void create(User user) {
         try {
+            Statement s = Database.getConnection().createStatement();
             String query = "INSERT INTO Users (username, password) VALUES ('%s', '%s')";
-            statement.execute(String.format(query, user.getUsername(), user.getPassword()));
-            System.out.println("User added to database");
-        } catch (SQLException e) {
+            s.execute(String.format(query, user.getUsername(), user.getPassword()));
+            System.out.println("User added to database!");
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Error adding user");
         }
     }
 
     @Override
-    public User getUser(int id) {
-        try {
-            String query = String.format("SELECT * FROM Users WHERE id = %d", id);
-            statement.execute(query);
-
-            ResultSet resultSet = statement.getResultSet();
-            String username = resultSet.getString("username");
-            String password = resultSet.getString("password");
-            return new User(username, password);
-        } catch (SQLException e) {
-            System.out.println("Error getting user with id "+id);
+    public User getUser(String username) throws SQLException, ClassNotFoundException {
+        User user = null;
+        for (User u : getAll()) {
+            if (u.getUsername().equals(username)) {
+                user = u;
+            }
         }
-        return null;
+        return user;
     }
 
     @Override
@@ -48,7 +40,8 @@ public class UserService extends Database implements UserDao {
         return null;
     }
 
-    public List<User> getAll() {
+    public static List<User> getAll() throws SQLException, ClassNotFoundException {
+        Statement statement = Database.getConnection().createStatement();
         List<User> users = new ArrayList<>();
         try {
             ResultSet result = statement.executeQuery("SELECT * FROM Users");
@@ -59,17 +52,27 @@ public class UserService extends Database implements UserDao {
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            System.out.println("SQLExeption");
         }
         return users.size() > 0 ? users : new ArrayList<>();
     }
 
-    public void addTestUsers() {
-        try {
-            statement.execute("INSERT INTO Users (username, password) VALUES ('user1', 'password1')");
-            statement.execute("INSERT INTO Users (username, password) VALUES ('user2', 'password2')");
-        } catch (SQLException throwables) {
-            System.out.println("Error initializing database");
+    public boolean validCredentials(String username, String password) throws SQLException, ClassNotFoundException {
+        User user = getUser(username);
+        if (user == null) {
+            System.out.println("User does not exist.");
+            return false;
         }
+        boolean usernameIsCorrect = user.getUsername().equals(username);
+        boolean passwordIsCorrect = user.getPassword().equals(password);
+
+        if (usernameIsCorrect && passwordIsCorrect) {
+            return true;
+        }
+        System.out.println("Invalid username or password.");
+        return false;
+    }
+
+    public void login(String username) {
+        loggedUser = username;
     }
 }

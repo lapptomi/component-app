@@ -7,7 +7,10 @@ import java.util.List;
 
 public interface UserDao {
     void create(User user);
-    User getUser(int id) throws SQLException;
+    User getUser(String username) throws SQLException, ClassNotFoundException;
     User update(int id);
-    List<User> getAll();
+
+    static List<User> getAll() {
+        return null;
+    }
 }

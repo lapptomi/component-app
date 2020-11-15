@@ -4,25 +4,31 @@ import java.sql.*;
 
 public class Database {
 
-    private final Connection connection;
-
-    public Database() throws ClassNotFoundException, SQLException {
+    public static Connection getConnection() throws ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
-        // connectionType1 runs database in memory
-        // connectionType2 runs database in file "testi.db"
-        String connectionType1 =  "jdbc:sqlite::memory:";
-        String connectionType2 = "jdbc:sqlite:testi.db";
-
-        this.connection = DriverManager.getConnection(connectionType1);
-        initializeDatabase();
+        Connection connection = null;
+        String DB_URL = "jdbc:sqlite:testi.db";
+        try {
+            connection = DriverManager.getConnection(DB_URL);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return connection;
     }
 
-    public Connection getConnection() {
-        return this.connection;
-    }
+    public static void initializeDatabase() {
+        try {
+            Statement statement = getConnection().createStatement();
+            System.out.println("Creating Table: Users");
+            statement.execute("CREATE TABLE Users (id INTEGER PRIMARY KEY, username TEXT NOT NULL UNIQUE, password TEXT)");
 
-    public void initializeDatabase() throws SQLException {
-        Statement s = connection.createStatement();
-        s.execute("CREATE TABLE Users (id INTEGER PRIMARY KEY, username TEXT, password TEXT)");
+            System.out.println("Adding user: user1, password1");
+            statement.execute("INSERT INTO Users (username, password) VALUES ('user1', 'password1')");
+
+            System.out.println("Adding user: user2, password2");
+            statement.execute("INSERT INTO Users (username, password) VALUES ('user2', 'password2')");
+        } catch (Exception e) {
+            System.out.println("Error initializing database");
+        }
     }
 }

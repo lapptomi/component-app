@@ -1,63 +1,34 @@
 package ui;
 
+import domain.Database;
 import domain.User;
 import domain.UserService;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ui.scenes.LoginPage;
-import ui.scenes.RegisterPage;
 
 
 public class AppUi extends Application {
 
-    private final RegisterPage registerPage = new RegisterPage();
-    private final LoginPage loginPage = new LoginPage();
-    private UserService userService;
-
     @Override
-    public void start(Stage stage) throws Exception {
-        this.userService = new UserService();
-
-        stage.setTitle("Login");
-        if (userService.getAll().size() == 0) {
-            userService.addTestUsers();
+    public void init() throws Exception {
+        Database.initializeDatabase();
+        System.out.println("Users in database:");
+        for (User user : UserService.getAll()) {
+            System.out.println("Username: "+user.getUsername()+", Password: "+user.getPassword()+"");
         }
-
-        // Login page
-        Scene loginPageScene = new Scene(loginPage, 500, 300);
-        // Register page
-        Scene registerPageScene = new Scene(registerPage, 500, 300);
-
-        // Login page button actions
-        loginPage.loginButton.setOnAction(event -> {
-            String username = loginPage.usernameField.getText();
-            String password = loginPage.passwordField.getText();
-            System.out.println(username+" "+password);
-            loginPage.alert.showAndWait();
-        });
-        loginPage.registerPageButton.setOnAction(event -> {
-            stage.setScene(registerPageScene);
-        });
-
-        // Register page button actions
-        registerPage.returnButton.setOnAction(event -> {
-            stage.setScene(loginPageScene);
-        });
-        registerPage.createUserButton.setOnAction(event -> {
-            String username = registerPage.usernameField.getText();
-            String password = registerPage.passwordField.getText();
-            userService.create(new User(username, password));
-        });
-
-
-        stage.setScene(loginPageScene);
-        stage.show();
     }
 
     @Override
-    public void stop() throws Exception {
-        System.out.println("Stop");
+    public void start(Stage stage) throws Exception {
+        stage.setTitle("Login");
+        Parent loginRoot = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        Scene loginScene = new Scene(loginRoot);
+
+        stage.setScene(loginScene);
+        stage.show();
     }
 
     public static void run(String[] args) {

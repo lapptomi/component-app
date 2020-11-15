@@ -12,7 +12,12 @@
 | 13.11 | 1h | DAO-rajapintojen kertausta ja toteuttamista |
 | 13.11 | 1h | sovelluksen refaktorointia |
 | 13.11 | 15min | virheilmoituksen luomista käyttöliittymään kirjautumiseen liittyen |
-|     |     |  |
-|     |     |  |
-|     |     |  |
-| yht |     |  |
+| 14.11 | 2h | kirjautumisen toiminnallisuuden toteuttamista |
+| 14.11| 1h | sovelluksen refaktorointia |  
+| 14.11 | 2h | sovelluksen debuggausta | 
+| 14.11 | 2h | tutustumista FXML:n | 
+| 14.11 | 2h | käyttöliittymien vaihtamista alkuperäisestä FXML-muotoon | 
+| 14.11 | 2h | sovelluksen refaktorointia ja toiminnallisuuden parantamista | 
+| 15.11 | 1h | kirjautumisen toiminnallisuuden parantamista | 
+| 15.11 | 2h | sovelluksen debuggausta ja refaktorointia | 
+| yht | 24h 5min |  |
