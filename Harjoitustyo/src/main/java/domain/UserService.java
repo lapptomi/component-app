@@ -30,6 +30,7 @@ public class UserService implements UserDao {
         for (User u : getAll()) {
             if (u.getUsername().equals(username)) {
                 user = u;
+                break;
             }
         }
         return user;
