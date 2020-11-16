@@ -11,11 +11,19 @@ import java.util.List;
 public class UserService implements UserDao {
 
     public static String loggedUser = null;
+    private Database database;
+
+    public UserService() {
+        this.database = new Database();
+    }
 
     @Override
     public void create(User user) {
+        if (user.getUsername().length() < 3 || user.getPassword().length() < 6) {
+            return;
+        }
         try {
-            Statement s = Database.getConnection().createStatement();
+            Statement s = database.getConnection().createStatement();
             String query = "INSERT INTO Users (username, password) VALUES ('%s', '%s')";
             s.execute(String.format(query, user.getUsername(), user.getPassword()));
             System.out.println("User added to database!");
@@ -37,12 +45,13 @@ public class UserService implements UserDao {
     }
 
     @Override
-    public User update(int id) {
+    public User update(String Username) {
         return null;
     }
 
-    public static List<User> getAll() throws SQLException, ClassNotFoundException {
-        Statement statement = Database.getConnection().createStatement();
+    @Override
+    public List<User> getAll() throws ClassNotFoundException, SQLException {
+        Statement statement = database.getConnection().createStatement();
         List<User> users = new ArrayList<>();
         try {
             ResultSet result = statement.executeQuery("SELECT * FROM Users");
@@ -57,14 +66,16 @@ public class UserService implements UserDao {
         return users.size() > 0 ? users : new ArrayList<>();
     }
 
-    public boolean validCredentials(String username, String password) throws SQLException, ClassNotFoundException {
-        User user = getUser(username);
+    public boolean validCredentials(User userToCheck) throws SQLException, ClassNotFoundException {
+        User user = getUser(userToCheck.getUsername());
         if (user == null) {
             System.out.println("User does not exist.");
             return false;
         }
-        boolean usernameIsCorrect = user.getUsername().equals(username);
-        boolean passwordIsCorrect = user.getPassword().equals(password);
+        String username = user.getUsername();
+        String password = user.getPassword();
+        boolean usernameIsCorrect = userToCheck.getUsername().equals(username);
+        boolean passwordIsCorrect = userToCheck.getPassword().equals(password);
 
         if (usernameIsCorrect && passwordIsCorrect) {
             return true;
@@ -73,7 +84,9 @@ public class UserService implements UserDao {
         return false;
     }
 
-    public void login(String username) {
-        loggedUser = username;
+    public void login(User user) throws SQLException, ClassNotFoundException {
+        if (validCredentials(user)) {
+            loggedUser = user.getUsername();
+        }
     }
 }

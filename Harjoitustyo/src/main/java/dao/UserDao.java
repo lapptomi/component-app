@@ -8,9 +8,6 @@ import java.util.List;
 public interface UserDao {
     void create(User user);
     User getUser(String username) throws SQLException, ClassNotFoundException;
-    User update(int id);
-
-    static List<User> getAll() {
-        return null;
-    }
+    User update(String username);
+    List<User> getAll() throws ClassNotFoundException, SQLException;
 }

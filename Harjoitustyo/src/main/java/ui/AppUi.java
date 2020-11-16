@@ -10,13 +10,20 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
+
 public class AppUi extends Application {
+
+    Database database;
+    UserService userService;
 
     @Override
     public void init() throws Exception {
-        Database.initializeDatabase();
+        this.userService = new UserService();
+        this.database = new Database();
+        database.initializeDatabase();
+
         System.out.println("Users in database:");
-        for (User user : UserService.getAll()) {
+        for (User user : userService.getAll()) {
             System.out.println("Username: "+user.getUsername()+", Password: "+user.getPassword()+"");
         }
     }
