@@ -20,6 +20,8 @@ public class AppUi extends Application {
     public void init() throws Exception {
         this.userService = new UserService();
         this.database = new Database();
+
+        database.initializeTestDatabase();
         database.initializeDatabase();
 
         System.out.println("Users in database:");

@@ -20,4 +20,6 @@
 | 14.11 | 2h | sovelluksen refaktorointia ja toiminnallisuuden parantamista | 
 | 15.11 | 1h | kirjautumisen toiminnallisuuden parantamista | 
 | 15.11 | 2h | sovelluksen debuggausta ja refaktorointia | 
-| yht | 24h 5min |  |
+| 16.11 | 1h | erillisen tietokannan luomista testejä varten | 
+| 16.11 | 1h | testien kirjoittamista kirjautumiseen ja rekisteröintiin liittyen | 
+| yht | 26h 5min |  |

@@ -31,11 +31,6 @@ public class RegisterController {
     Alert invalidCredentialsAlert = new Alert(Alert.AlertType.ERROR);
     Alert userCreatedAlert = new Alert(Alert.AlertType.INFORMATION);
 
-
-    public RegisterController()  {
-        super();
-    }
-
     public void handleReturnButtonClick() throws IOException {
         Stage stage = (Stage) returnButton.getScene().getWindow();;
         Parent parent = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));

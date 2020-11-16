@@ -41,7 +41,7 @@ public class LoginController extends UserService {
             alert.setContentText("Please try again.");
             alert.showAndWait();
         } else if (super.validCredentials(user)) {
-            login(new User(username, password));
+            login(user);
         } else {
             System.out.println("Error logging in");
         }

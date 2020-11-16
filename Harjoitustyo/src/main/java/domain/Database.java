@@ -1,6 +1,9 @@
 package domain;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -29,6 +32,7 @@ public class Database {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
         return connection;
     }
 
