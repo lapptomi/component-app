@@ -1,16 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
    <children>
-      <Text fx:id="helloWorldText" layoutX="222.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello world!" AnchorPane.bottomAnchor="201.1337890625" AnchorPane.topAnchor="198.8662109375">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Text>
+      <VBox prefHeight="517.0" prefWidth="143.0" style="-fx-background-color: #01cafe;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="82.0" prefWidth="143.0">
+               <children>
+                  <Text fx:id="homePageTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" textAlignment="CENTER">
+                     <font>
+                        <Font size="43.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="143.0">
+               <children>
+                <Button fx:id="itemsButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleItemsButtonClick" prefHeight="38.0" prefWidth="143.0" style="-fx-background-color: #00add2; -fx-background-radius: 0;" text="ITEMS" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="92.0" prefHeight="49.0" prefWidth="143.0">
+               <children>
+                  <Button fx:id="addItemButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleAddItemButtonClick" prefHeight="39.0" prefWidth="143.0" style="-fx-background-color: #00add2; -fx-background-radius: 0;" text="ADD ITEM" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </VBox>
+      <AnchorPane layoutX="143.0" prefHeight="39.0" prefWidth="630.0" style="-fx-background-color: gray;" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="logoutButton" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="356.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleLogoutButtonClick" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #00add2; -fx-background-radius: 0;" text="LOGOUT" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Text fx:id="userLoggedInText" fill="WHITE" layoutX="88.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User &quot;user&quot; logged in" textAlignment="RIGHT" wrappingWidth="348.0" AnchorPane.rightAnchor="150.0" />
+         </children>
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" color="#00000090" height="22.635" radius="5.15875" width="0.0" />
+         </effect>
+      </AnchorPane>
+      <ListView fx:id="itemsList" layoutX="198.0" layoutY="82.0" prefHeight="279.0" prefWidth="427.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="90.0" />
    </children>
 </AnchorPane>

@@ -53,6 +53,8 @@ public class LoginController extends UserService {
         Stage stage = (Stage) loginButton.getScene().getWindow();
         Parent parent = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
         stage.setScene(new Scene(parent));
+        stage.setTitle("Home");
+        stage.setResizable(false);
     }
 
     @FXML

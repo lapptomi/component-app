@@ -22,4 +22,5 @@
 | 15.11 | 2h | sovelluksen debuggausta ja refaktorointia | 
 | 16.11 | 1h | erillisen tietokannan luomista testejä varten | 
 | 16.11 | 1h | testien kirjoittamista kirjautumiseen ja rekisteröintiin liittyen | 
-| yht | 26h 5min |  |
+| 17.11 | 3h | käyttöliittymän suunnittelua ja toteutusta sivulle home | 
+| yht | 29h 5min |  |
