@@ -42,22 +42,21 @@ public class RegisterController {
         String password = passwordField.getText();
         boolean usernameIsNotUnique = userService.getUser(username) != null;
 
+        invalidCredentialsAlert.setTitle("Error");
+        invalidCredentialsAlert.setContentText("Please try again.");
+
         if (username.length() < 3 || password.length() < 6) {
-            invalidCredentialsAlert.setTitle("Error");
             invalidCredentialsAlert.setHeaderText("Username or password too short.");
-            invalidCredentialsAlert.setContentText("Please try again.");
             invalidCredentialsAlert.showAndWait();
         } else if (usernameIsNotUnique) {
-            invalidCredentialsAlert.setTitle("Error");
             invalidCredentialsAlert.setHeaderText("Username "+username+" is already taken.");
-            invalidCredentialsAlert.setContentText("Please try again.");
             invalidCredentialsAlert.showAndWait();
         } else {
             userService.create(new User(username, password));
             userCreatedAlert.setHeaderText("New user "+username+" created!");
-            userCreatedAlert.showAndWait();
             usernameField.clear();
             passwordField.clear();
+            userCreatedAlert.showAndWait();
         }
     }
 }

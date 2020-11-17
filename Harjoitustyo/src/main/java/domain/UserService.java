@@ -63,7 +63,7 @@ public class UserService implements UserDao {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return users.size() > 0 ? users : new ArrayList<>();
+        return users;
     }
 
     public boolean validCredentials(User userToCheck) throws SQLException, ClassNotFoundException {
