@@ -32,7 +32,6 @@ public class Database {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
         return connection;
     }
 

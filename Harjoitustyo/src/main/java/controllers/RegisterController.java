@@ -45,7 +45,7 @@ public class RegisterController {
         invalidCredentialsAlert.setTitle("Error");
         invalidCredentialsAlert.setContentText("Please try again.");
 
-        if (username.length() < 3 || password.length() < 6) {
+        if (username.length() < 4 || password.length() < 6) {
             invalidCredentialsAlert.setHeaderText("Username or password too short.");
             invalidCredentialsAlert.showAndWait();
         } else if (usernameIsNotUnique) {

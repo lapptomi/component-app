@@ -19,7 +19,7 @@ public class UserService implements UserDao {
 
     @Override
     public void create(User user) {
-        if (user.getUsername().length() < 3 || user.getPassword().length() < 6) {
+        if (user.getUsername().length() < 4 || user.getPassword().length() < 6) {
             return;
         }
         try {
