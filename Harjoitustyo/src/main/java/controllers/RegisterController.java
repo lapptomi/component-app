@@ -20,7 +20,7 @@ public class RegisterController {
     @FXML
     Button returnButton;
     @FXML
-    Button createAccountButton;
+    Button signUpButton;
     @FXML
     TextField usernameField;
     @FXML
@@ -34,10 +34,11 @@ public class RegisterController {
     public void handleReturnButtonClick() throws IOException {
         Stage stage = (Stage) returnButton.getScene().getWindow();;
         Parent parent = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        stage.setTitle("Login");
         stage.setScene(new Scene(parent));
     }
 
-    public void handleCreateAccountButtonClick() throws SQLException, ClassNotFoundException {
+    public void handleSignUpButtonClick() throws SQLException, ClassNotFoundException {
         String username = usernameField.getText();
         String password = passwordField.getText();
         boolean usernameIsNotUnique = userService.getUser(username) != null;

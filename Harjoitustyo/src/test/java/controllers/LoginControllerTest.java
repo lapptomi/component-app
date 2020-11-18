@@ -44,7 +44,7 @@ public class LoginControllerTest {
         assertNull(UserService.loggedUser);
 
         User userToLogIn = userService.getAll().get(0);
-        userService.login(userToLogIn);
+        userService.loginUser(userToLogIn);
 
         assertNotNull(UserService.loggedUser);
     }
@@ -54,7 +54,7 @@ public class LoginControllerTest {
         assertNull(UserService.loggedUser);
 
         User nonExistingUser = new User("randomUsername", "randomPassword");
-        userService.login(nonExistingUser);
+        userService.loginUser(nonExistingUser);
 
         assertFalse(userService.validCredentials(nonExistingUser));
         assertNull(UserService.loggedUser);
@@ -67,7 +67,7 @@ public class LoginControllerTest {
         User userWithWrongPassword = userService.getAll().get(0);
         userWithWrongPassword.setPassword("wrongpassword");
 
-        userService.login(userWithWrongPassword);
+        userService.loginUser(userWithWrongPassword);
         assertNull(UserService.loggedUser);
         assertFalse(userService.validCredentials(userWithWrongPassword));
     }

@@ -41,7 +41,7 @@ public class LoginController extends UserService {
             alert.setContentText("Please try again.");
             alert.showAndWait();
         } else if (super.validCredentials(user)) {
-            login(user);
+            loginUser(user);
         } else {
             System.out.println("Error logging in");
         }
@@ -61,6 +61,7 @@ public class LoginController extends UserService {
     private void handleRegisterButtonClick(ActionEvent event) throws IOException {
         Stage stage = (Stage) registerButton.getScene().getWindow();
         Parent parent = FXMLLoader.load(getClass().getResource("/fxml/register.fxml"));
+        stage.setTitle("Sign up");
         stage.setScene(new Scene(parent));
     }
 }

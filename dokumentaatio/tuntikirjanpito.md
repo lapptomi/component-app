@@ -23,4 +23,5 @@
 | 16.11 | 1h | erillisen tietokannan luomista testejä varten | 
 | 16.11 | 1h | testien kirjoittamista kirjautumiseen ja rekisteröintiin liittyen | 
 | 17.11 | 3h | käyttöliittymän suunnittelua ja toteutusta sivulle home | 
-| yht | 29h 5min |  |
+| 18.11 | 1h | käyttöliittymän parantelua | 
+| yht | 30h 5min |  |

@@ -37,6 +37,7 @@ public class AppUi extends Application {
         Scene loginScene = new Scene(loginRoot);
 
         stage.setScene(loginScene);
+        stage.setResizable(false);
         stage.show();
     }
 

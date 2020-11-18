@@ -12,7 +12,7 @@ import java.sql.*;
 
 public class Database {
 
-    public static String DB_URL;
+    public static String DB_URL = null;
 
     public Database() {
         // Change to false if not running tests
@@ -64,6 +64,7 @@ public class Database {
     }
 
     public void initializeDatabase() {
+        if (DB_URL != null) return;
         try {
             Statement statement = getConnection().createStatement();
             System.out.println("Creating Table: Users");

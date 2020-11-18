@@ -84,9 +84,13 @@ public class UserService implements UserDao {
         return false;
     }
 
-    public void login(User user) throws SQLException, ClassNotFoundException {
+    public void loginUser(User user) throws SQLException, ClassNotFoundException {
         if (validCredentials(user)) {
             loggedUser = user.getUsername();
         }
+    }
+
+    public void logoutUser() {
+        loggedUser = null;
     }
 }
