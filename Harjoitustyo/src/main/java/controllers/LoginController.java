@@ -5,6 +5,7 @@ import domain.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -16,7 +17,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class LoginController extends UserService {
+public class LoginController {
+
+    private UserService userService = new UserService();
 
     @FXML
     Button loginButton;
@@ -27,21 +30,23 @@ public class LoginController extends UserService {
     @FXML
     PasswordField passwordField;
 
+
     Alert alert = new Alert(Alert.AlertType.ERROR);
 
     public void handleLoginButtonClick() throws SQLException, ClassNotFoundException, IOException {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        User user = new User(username, password);
+        //User user = new User(username, password);
+        User user = new User("testUser1", "password1");
 
-        if (!super.validCredentials(user)) {
+        if (!userService.validCredentials(user)) {
             alert.setTitle("Error");
             alert.setHeaderText("Invalid username or password.");
             alert.setContentText("Please try again.");
             alert.showAndWait();
-        } else if (super.validCredentials(user)) {
-            loginUser(user);
+        } else if (userService.validCredentials(user)) {
+            userService.loginUser(user);
         } else {
             System.out.println("Error logging in");
         }
