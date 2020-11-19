@@ -45,8 +45,11 @@ public class ItemsController implements Initializable {
     TableColumn<Component, String> serialNumberColumn;
 
 
-    public void handleAddItemButtonClick() {
-        System.out.println("Clicked add item button");
+    public void handleAddItemButtonClick() throws IOException {
+        Stage stage = (Stage) addItemButton.getScene().getWindow();
+        Parent parent = FXMLLoader.load(getClass().getResource("/fxml/addItem.fxml"));
+        stage.setTitle("Add item");
+        stage.setScene(new Scene(parent));
     }
 
     public void handleLogoutButtonClick() throws IOException {

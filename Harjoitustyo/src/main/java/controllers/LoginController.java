@@ -37,8 +37,7 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        //User user = new User(username, password);
-        User user = new User("testUser1", "password1");
+        User user = new User(username, password);
 
         if (!userService.validCredentials(user)) {
             alert.setTitle("Error");
