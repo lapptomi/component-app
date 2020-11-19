@@ -113,12 +113,12 @@
             <Text fill="WHITE" layoutX="285.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Model" />
             <Text fill="WHITE" layoutX="60.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer" AnchorPane.leftAnchor="60.0" />
             <Text fill="WHITE" layoutX="285.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serial Number" />
-            <Button fx:id="itemsButton1" alignment="CENTER" layoutY="1.0" mnemonicParsing="false" onAction="#handleItemsButtonClick" prefHeight="60.0" prefWidth="516.0" style="-fx-background-color: rgba(21, 57, 76, 0.71); -fx-background-radius: 0;" textFill="WHITE">
+            <Button alignment="CENTER" layoutY="1.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="516.0" style="-fx-background-color: rgba(21, 57, 76, 0.71); -fx-background-radius: 0;" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="HAND" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
                <graphic>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD COMPONENT TO DABABASE">
