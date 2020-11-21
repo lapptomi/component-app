@@ -50,11 +50,11 @@ public class RegisterController {
             invalidCredentialsAlert.setHeaderText("Username or password too short.");
             invalidCredentialsAlert.showAndWait();
         } else if (usernameIsNotUnique) {
-            invalidCredentialsAlert.setHeaderText("Username "+username+" is already taken.");
+            invalidCredentialsAlert.setHeaderText("Username " + username + " is already taken.");
             invalidCredentialsAlert.showAndWait();
         } else {
             userService.create(new User(username, password));
-            userCreatedAlert.setHeaderText("New user "+username+" created!");
+            userCreatedAlert.setHeaderText("New user " + username + " created!");
             usernameField.clear();
             passwordField.clear();
             userCreatedAlert.showAndWait();

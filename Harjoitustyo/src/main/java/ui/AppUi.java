@@ -26,7 +26,9 @@ public class AppUi extends Application {
 
         System.out.println("Users in database:");
         for (User user : userService.getAll()) {
-            System.out.println("Username: "+user.getUsername()+", Password: "+user.getPassword()+"");
+            String username = user.getUsername();
+            String password = user.getPassword();
+            System.out.println(String.format("Username: %s Password: %s", username, password));
         }
     }
 

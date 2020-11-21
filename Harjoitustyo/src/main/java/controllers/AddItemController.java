@@ -75,11 +75,9 @@ public class AddItemController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        userLoggedInText.setText("Logged in as: "+UserService.loggedUser);
+        userLoggedInText.setText("Logged in as: " + UserService.loggedUser);
 
-        String[] componentTypes = {
-                "CPU", "GPU", "PSU", "Motherboard", "RAM", "HDD", "SSD"
-        };
+        String[] componentTypes = {"CPU", "GPU", "HDD", "Motherboard", "PSU", "RAM", "SSD"};
         componentTypeBox.setItems(
                 FXCollections.observableArrayList(componentTypes)
         );

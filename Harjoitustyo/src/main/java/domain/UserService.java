@@ -45,7 +45,7 @@ public class UserService implements UserDao {
     }
 
     @Override
-    public User update(String Username) {
+    public User update(String username) {
         return null;
     }
 

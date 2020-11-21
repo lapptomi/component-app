@@ -1,9 +1,6 @@
 package domain;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -12,15 +9,15 @@ import java.sql.*;
 
 public class Database {
 
-    public static String DB_URL = null;
+    public static String dbUrl = null;
 
     public Database() {
         // Change to false if not running tests
         boolean runInTestMode = true;
         if (runInTestMode) {
-            DB_URL = "jdbc:sqlite:test.db";
+            dbUrl = "jdbc:sqlite:test.db";
         } else {
-            DB_URL = "jdbc:sqlite:app.db";
+            dbUrl = "jdbc:sqlite:app.db";
         }
     }
 
@@ -36,7 +33,7 @@ public class Database {
     }
 
     public Connection getConnection() throws ClassNotFoundException {
-        return this.connection(DB_URL);
+        return this.connection(dbUrl);
     }
 
     public void initializeTestDatabase() {
@@ -64,7 +61,9 @@ public class Database {
     }
 
     public void initializeDatabase() {
-        if (DB_URL != null) return;
+        if (dbUrl != null) {
+            return;
+        }
         try {
             Statement statement = getConnection().createStatement();
             System.out.println("Creating Table: Users");

@@ -68,7 +68,7 @@ public class ItemsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String text = "Logged in as: "+ UserService.loggedUser;
+        String text = "Logged in as: " + UserService.loggedUser;
         userLoggedInText.setText(text);
 
         typeColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("type"));
