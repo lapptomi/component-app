@@ -55,6 +55,17 @@ public class Database {
 
             System.out.println("Adding user: testUser2, password2");
             statement.execute("INSERT INTO Users (username, password) VALUES ('testUser2', 'password2')");
+
+            System.out.println("Creating Table: Components");
+            statement.execute("CREATE TABLE Components (id INTEGER PRIMARY KEY, type TEXT, model TEXT, manufacturer TEXT, serialnumber TEXT)"
+            );
+            String query = "INSERT INTO Components (type, model, manufacturer, serialnumber) VALUES ('%s', '%s', '%s', '%s')";
+            System.out.println("Adding components:");
+            statement.execute(String.format(query, "GPU", "3070", "Asus", "123129381293sf"));
+            statement.execute(String.format(query, "CPU", "8400", "Intel", "2222aaaaaaa"));
+            statement.execute(String.format(query, "PSU", "123", "Corsair", "999sa9dnf"));
+            statement.execute(String.format(query, "CPU", "2600", "AMD", "sad8as9f"));
+            System.out.println("Components added to database");
         } catch (Exception e) {
             System.out.println("Error initializing test database");
         }

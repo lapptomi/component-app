@@ -1,6 +1,7 @@
 package controllers;
 
 import domain.Component;
+import domain.ComponentService;
 import domain.UserService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,12 +17,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ItemsController implements Initializable {
 
     private UserService userService = new UserService();
+    private ComponentService componentService = new ComponentService();
     private Alert logoutAlert = new Alert(Alert.AlertType.CONFIRMATION);
 
     @FXML
@@ -76,13 +80,15 @@ public class ItemsController implements Initializable {
         manufacturerColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("manufacturer"));
         serialNumberColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("serialNumber"));
 
-        ObservableList<Component> items = FXCollections.observableArrayList(
-                new Component("CPU", "8400", "Intel", "123"),
-                new Component("GPU", "3090", "MSI", "212asc"),
-                new Component("PSU", "RM750", "Corsair", "123"),
-                new Component("PSU", "RM750", "Corsair", "12345678901234567890")
-        );
+        ObservableList<Component> components = FXCollections.observableArrayList();
+        try {
+            componentService.getAll().forEach(component -> {
+                components.add(component);
+            });
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
 
-        componentTable.setItems(items);
+        componentTable.setItems(components);
     }
 }
