@@ -82,9 +82,9 @@ public class ItemsController implements Initializable {
 
         ObservableList<Component> components = FXCollections.observableArrayList();
         try {
-            componentService.getAll().forEach(component -> {
+            componentService.getAll().forEach(component ->
                 components.add(component);
-            });
+            );
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
