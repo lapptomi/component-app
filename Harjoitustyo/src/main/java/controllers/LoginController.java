@@ -36,28 +36,23 @@ public class LoginController {
     public void handleLoginButtonClick() throws SQLException, ClassNotFoundException, IOException {
         String username = usernameField.getText();
         String password = passwordField.getText();
-
         User user = new User(username, password);
 
         if (!userService.validCredentials(user)) {
-            alert.setTitle("Error");
             alert.setHeaderText("Invalid username or password.");
             alert.setContentText("Please try again.");
             alert.showAndWait();
         } else if (userService.validCredentials(user)) {
             userService.loginUser(user);
-        } else {
-            System.out.println("Error logging in");
         }
-
         if (UserService.loggedUser == null) {
             return;
         }
 
         Stage stage = (Stage) loginButton.getScene().getWindow();
-        Parent parent = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("/fxml/items.fxml"));
         stage.setScene(new Scene(parent));
-        stage.setTitle("Home");
+        stage.setTitle("Items");
         stage.setResizable(false);
     }
 

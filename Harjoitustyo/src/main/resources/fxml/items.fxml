@@ -66,7 +66,7 @@
       </VBox>
       <AnchorPane layoutX="143.0" prefHeight="39.0" prefWidth="630.0" style="-fx-background-color: gray;" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="logoutButton" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="356.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleLogoutButtonClick" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #00add2; -fx-background-radius: 0;" text="LOGOUT" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Button fx:id="logoutButton" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="356.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleLogoutButtonClick" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #00add2; -fx-background-radius: 0;" text="Logout" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -80,13 +80,32 @@
             <DropShadow blurType="TWO_PASS_BOX" color="#00000090" height="22.635" radius="5.15875" width="0.0" />
          </effect>
       </AnchorPane>
-      <TableView fx:id="componentTable" layoutX="203.0" layoutY="92.0" prefHeight="327.0" prefWidth="533.0" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="95.0">
+      <TableView fx:id="componentTable" layoutX="203.0" layoutY="123.0" prefHeight="313.0" prefWidth="533.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="123.0">
         <columns>
-          <TableColumn fx:id="typeColumn" prefWidth="73.0" resizable="false" text="Type" />
-          <TableColumn fx:id="modelColumn" prefWidth="126.0" resizable="false" text="Model" />
+          <TableColumn fx:id="typeColumn" prefWidth="100.0" resizable="false" text="Type" />
+          <TableColumn fx:id="modelColumn" prefWidth="98.0" resizable="false" text="Model" />
             <TableColumn fx:id="manufacturerColumn" editable="false" prefWidth="132.0" resizable="false" text="Manufacturer" />
             <TableColumn fx:id="serialNumberColumn" maxWidth="1.7976931348623157E308" prefWidth="200.0" resizable="false" text="Serial number" />
         </columns>
       </TableView>
+      <AnchorPane layoutX="200.0" layoutY="84.0" prefHeight="38.0" prefWidth="533.0" style="-fx-background-color: rgba(115, 115, 115, 0.48);" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="85.0">
+         <children>
+            <Button alignment="CENTER" defaultButton="true" layoutY="10.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="533.0" style="-fx-background-color: rgba(21, 57, 76, 0.71); -fx-background-radius: 0;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <graphic>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="COMPONENTS IN DATABASE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

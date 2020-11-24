@@ -73,7 +73,7 @@
       </VBox>
       <AnchorPane layoutX="143.0" prefHeight="39.0" prefWidth="630.0" style="-fx-background-color: gray;" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="logoutButton" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="356.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleLogoutButtonClick" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #00add2; -fx-background-radius: 0;" text="LOGOUT" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Button fx:id="logoutButton" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="356.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleLogoutButtonClick" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #00add2; -fx-background-radius: 0;" text="Logout" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -87,10 +87,10 @@
             <DropShadow blurType="TWO_PASS_BOX" color="#00000090" height="22.635" radius="5.15875" width="0.0" />
          </effect>
       </AnchorPane>
-      <AnchorPane layoutX="211.0" layoutY="101.0" prefHeight="327.0" prefWidth="516.0" style="-fx-background-color: rgba(115, 115, 115, 0.48); -fx-background-radius: 2;">
+      <AnchorPane layoutX="211.0" layoutY="101.0" prefHeight="327.0" prefWidth="516.0" style="-fx-background-color: rgba(115, 115, 115, 0.48); -fx-background-radius: 2;" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="85.0">
          <children>
-            <TextField fx:id="serialNumberTextField" layoutX="277.0" layoutY="190.0" promptText="Serial number" style="-fx-background-color: white;" AnchorPane.rightAnchor="60.0" />
-            <Button fx:id="addItemButton" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="285.0" layoutY="251.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAddItemButtonClick" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #00add2; -fx-background-radius: 0;" text="ADD ITEM" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="60.0">
+            <TextField fx:id="serialNumberTextField" layoutX="297.0" layoutY="191.0" promptText="Serial number" style="-fx-background-color: white;" AnchorPane.rightAnchor="65.0" />
+            <Button fx:id="addItemButton" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="285.0" layoutY="251.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAddItemButtonClick" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #00add2; -fx-background-radius: 0;" text="ADD ITEM" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="65.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -98,10 +98,10 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ComboBox fx:id="componentTypeBox" layoutX="52.0" layoutY="118.0" prefHeight="26.0" prefWidth="171.0" promptText="Type" style="-fx-background-color: white;" AnchorPane.leftAnchor="60.0" />
-            <TextField fx:id="modelTextField" layoutX="277.0" layoutY="118.0" promptText="Model" style="-fx-background-color: white;" AnchorPane.rightAnchor="60.0" />
-            <TextField fx:id="manufacturerTextField" layoutX="60.0" layoutY="190.0" promptText="Manufacturer" style="-fx-background-color: white;" />
-            <Button fx:id="clearButton" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="60.0" layoutY="251.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleClearButtonClick" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #00add2; -fx-background-radius: 0;" text="CLEAR" textAlignment="CENTER" textFill="WHITE">
+            <ComboBox fx:id="componentTypeBox" layoutX="65.0" layoutY="118.0" prefHeight="26.0" prefWidth="171.0" promptText="Type" style="-fx-background-color: white;" AnchorPane.leftAnchor="65.0" />
+            <TextField fx:id="modelTextField" layoutX="297.0" layoutY="118.0" promptText="Model" style="-fx-background-color: white;" AnchorPane.rightAnchor="65.0" />
+            <TextField fx:id="manufacturerTextField" layoutX="65.0" layoutY="191.0" promptText="Manufacturer" style="-fx-background-color: white;" AnchorPane.leftAnchor="65.0" />
+            <Button fx:id="clearButton" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="60.0" layoutY="251.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleClearButtonClick" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #00add2; -fx-background-radius: 0;" text="CLEAR" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="65.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -109,11 +109,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Text fill="WHITE" layoutX="60.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Component Type" AnchorPane.leftAnchor="60.0" />
-            <Text fill="WHITE" layoutX="285.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Model" />
-            <Text fill="WHITE" layoutX="60.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer" AnchorPane.leftAnchor="60.0" />
-            <Text fill="WHITE" layoutX="285.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serial Number" />
-            <Button alignment="CENTER" layoutY="1.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="516.0" style="-fx-background-color: rgba(21, 57, 76, 0.71); -fx-background-radius: 0;" textFill="WHITE">
+            <Text fill="WHITE" layoutX="65.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Component Type" AnchorPane.leftAnchor="65.0" />
+            <Text fill="WHITE" layoutX="297.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Model" />
+            <Text fill="WHITE" layoutX="65.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manufacturer" AnchorPane.leftAnchor="65.0" />
+            <Text fill="WHITE" layoutX="297.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serial Number" />
+            <Button alignment="CENTER" layoutY="1.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="533.0" style="-fx-background-color: rgba(21, 57, 76, 0.71); -fx-background-radius: 0;" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -121,7 +121,7 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
                <graphic>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD COMPONENT TO DABABASE">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD COMPONENT TO DATABASE">
                      <font>
                         <Font size="16.0" />
                      </font>

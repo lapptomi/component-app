@@ -1,5 +1,7 @@
 package controllers;
 
+import domain.Component;
+import domain.ComponentService;
 import domain.UserService;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -19,7 +21,10 @@ import java.util.ResourceBundle;
 public class AddItemController implements Initializable {
 
     private UserService userService = new UserService();
+    private ComponentService componentService = new ComponentService();
     private Alert logoutAlert = new Alert(Alert.AlertType.CONFIRMATION);
+    private Alert componentCreatedAlert = new Alert(Alert.AlertType.INFORMATION);
+    private Alert errorCreatingComponentAlert = new Alert(Alert.AlertType.ERROR);
 
     @FXML
     Text userLoggedInText;
@@ -38,7 +43,6 @@ public class AddItemController implements Initializable {
     TextField manufacturerTextField;
     @FXML
     TextField serialNumberTextField;
-
     @FXML
     ComboBox<String> componentTypeBox;
 
@@ -49,7 +53,7 @@ public class AddItemController implements Initializable {
 
         if (result.get() == ButtonType.OK) {
             userService.logoutUser();
-            Stage stage = (Stage) logoutButton.getScene().getWindow();;
+            Stage stage = (Stage) logoutButton.getScene().getWindow();
             Parent parent = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
             stage.setScene(new Scene(parent));
         }
@@ -70,16 +74,33 @@ public class AddItemController implements Initializable {
     }
 
     public void handleAddItemButtonClick() {
-        System.out.println("Add item button clicked");
+        String type = componentTypeBox.getItems().contains(componentTypeBox.getValue())
+                ? componentTypeBox.getValue() : null;
+        String model = modelTextField.getText();
+        String manufacturer = manufacturerTextField.getText();
+        String serialNumber = serialNumberTextField.getText();
+
+        if (validCredentials(type, model, manufacturer, serialNumber)) {
+            Component newComponent = new Component(type, model, manufacturer, serialNumber);
+            componentService.create(newComponent);
+            componentCreatedAlert.setHeaderText("Component added to database!");
+            handleClearButtonClick();
+            componentCreatedAlert.showAndWait();
+        } else {
+            errorCreatingComponentAlert.setHeaderText("Error adding component to database!");
+            errorCreatingComponentAlert.setContentText("Please try again.");
+            errorCreatingComponentAlert.showAndWait();
+        }
+    }
+
+    private boolean validCredentials(String type, String model, String manufacturer, String serialNumber) {
+        return type != null && model.length() > 0 && manufacturer.length() > 0 && serialNumber.length() > 0;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userLoggedInText.setText("Logged in as: " + UserService.loggedUser);
-
         String[] componentTypes = {"CPU", "GPU", "HDD", "Motherboard", "PSU", "RAM", "SSD"};
-        componentTypeBox.setItems(
-                FXCollections.observableArrayList(componentTypes)
-        );
+        componentTypeBox.setItems(FXCollections.observableArrayList(componentTypes));
     }
 }

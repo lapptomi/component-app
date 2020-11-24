@@ -9,7 +9,7 @@ import java.sql.*;
 
 public class Database {
 
-    public static String dbUrl = null;
+    private String dbUrl = null;
 
     public Database() {
         // Change to false if not running tests
@@ -40,35 +40,36 @@ public class Database {
         Path path = FileSystems.getDefault().getPath("test.db");
         try {
             Files.delete(path);
-        } catch (NoSuchFileException x) {
-            System.err.format("%s: no such" + " file or directory%n", path);
         } catch (IOException x) {
-            System.err.println(x);
+            System.out.println(x.getMessage());
         }
         try {
             Statement statement = getConnection().createStatement();
             System.out.println("Creating Table: Users");
             statement.execute("CREATE TABLE Users (id INTEGER PRIMARY KEY, username TEXT NOT NULL UNIQUE, password TEXT)");
-
-            System.out.println("Adding user: testUser1, password1");
-            statement.execute("INSERT INTO Users (username, password) VALUES ('testUser1', 'password1')");
-
-            System.out.println("Adding user: testUser2, password2");
-            statement.execute("INSERT INTO Users (username, password) VALUES ('testUser2', 'password2')");
-
+            addTestUsersToDatabase();
             System.out.println("Creating Table: Components");
-            statement.execute("CREATE TABLE Components (id INTEGER PRIMARY KEY, type TEXT, model TEXT, manufacturer TEXT, serialnumber TEXT)"
-            );
-            String query = "INSERT INTO Components (type, model, manufacturer, serialnumber) VALUES ('%s', '%s', '%s', '%s')";
-            System.out.println("Adding components:");
-            statement.execute(String.format(query, "GPU", "3070", "Asus", "123129381293sf"));
-            statement.execute(String.format(query, "CPU", "8400", "Intel", "2222aaaaaaa"));
-            statement.execute(String.format(query, "PSU", "123", "Corsair", "999sa9dnf"));
-            statement.execute(String.format(query, "CPU", "2600", "AMD", "sad8as9f"));
-            System.out.println("Components added to database");
+            statement.execute("CREATE TABLE Components (id INTEGER PRIMARY KEY, type TEXT, model TEXT, manufacturer TEXT, serialnumber TEXT)");
+            addTestComponentsToDatabase();
         } catch (Exception e) {
             System.out.println("Error initializing test database");
         }
+    }
+
+    public void addTestUsersToDatabase() throws ClassNotFoundException, SQLException {
+        Statement statement = getConnection().createStatement();
+        statement.execute("INSERT INTO Users (username, password) VALUES ('testUser1', 'password1')");
+        statement.execute("INSERT INTO Users (username, password) VALUES ('testUser2', 'password2')");
+    }
+
+    private void addTestComponentsToDatabase() throws ClassNotFoundException, SQLException {
+        Statement statement = getConnection().createStatement();
+        String query = "INSERT INTO Components (type, model, manufacturer, serialnumber) VALUES ('%s', '%s', '%s', '%s')";
+        statement.execute(String.format(query, "GPU", "3070", "Asus", "123129381293sf"));
+        statement.execute(String.format(query, "CPU", "8400", "Intel", "2222aaaaaaa"));
+        statement.execute(String.format(query, "PSU", "123", "Corsair", "999sa9dnf"));
+        statement.execute(String.format(query, "CPU", "2600", "AMD", "sad8as9f"));
+        statement.execute(String.format(query, "Motherboard", "LGA1151", "Asus", "999sa9dnf"));
     }
 
     public void initializeDatabase() {
