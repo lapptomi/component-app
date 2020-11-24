@@ -49,12 +49,12 @@ public class ComponentService implements ComponentDao {
     }
 
     @Override
-    public User getComponent(int id)  {
+    public Component getComponent(int id)  {
         return null;
     }
 
     @Override
-    public User update(int id) {
+    public Component update(int id) {
         return null;
     }
 

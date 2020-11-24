@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ComponentDao {
     void create(Component component);
-    User getComponent(int id) throws SQLException, ClassNotFoundException;
-    User update(int id);
+    Component getComponent(int id) throws SQLException, ClassNotFoundException;
+    Component update(int id);
     List<Component> getAll() throws ClassNotFoundException, SQLException;
 }
