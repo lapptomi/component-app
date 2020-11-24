@@ -1,3 +1,4 @@
+
 # Vaatimusmäärittely
 
 ## Sovelluksen tarkoitus
@@ -13,20 +14,20 @@ Jatkossa mahdollisesti kolme eri käyttäjäroolia, jotka kuvattu tarkemmin jatk
 
 ### Ennen kirjautumista
 
-- käyttäjä voi luoda järjestelmään käyttäjätunnuksen
-  - käyttäjäunnuksen tulee olla uniikki ja pituudeltaan vähintään 4 merkkiä sekä salasanan tulee olla vähintään 6 merkkiä pitkä
+- käyttäjä voi luoda järjestelmään käyttäjätunnuksen - **Tehty**  
+  - käyttäjäunnuksen tulee olla uniikki ja pituudeltaan vähintään 4 merkkiä sekä salasanan tulee olla vähintään 6 merkkiä pitkä - **Tehty**  
 
-- käyttäjä voi kirjautua järjestelmään
-  - kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle
-  - jos käyttäjää ei ole olemassa, antaa järjestelmä ilmoituksen
+- käyttäjä voi kirjautua järjestelmään - **Tehty**  
+  - kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle - **Tehty**
+  - jos käyttäjää ei ole olemassa, antaa järjestelmä ilmoituksen - **Tehty**  
 
 
 ### Kirjautumisen jälkeen
 
-- käyttäjä voi tarkastella tietokannan sisältöä, eli listaa komponenteista
+- käyttäjä voi tarkastella tietokannan sisältöä, eli listaa komponenteista - **Tehty**  
 
-- käyttäjä voi lisätä komponentteja tietokantaan lomakkeeseen annettujen tietojen perusteella
-  - lomakkeessa on aluksi kentät ainakin seuraaville tiedoille: Type, Model, Manufacturer ja Serial number
+- käyttäjä voi lisätä komponentteja tietokantaan lomakkeeseen annettujen tietojen perusteella - **Tehty**  
+  - lomakkeessa on aluksi kentät ainakin seuraaville tiedoille: Type, Model, Manufacturer ja Serial number - **Tehty**  
 
 - käyttäjä voi muokata tietokannassa olevien komponenttien tietoja
 
@@ -34,7 +35,7 @@ Jatkossa mahdollisesti kolme eri käyttäjäroolia, jotka kuvattu tarkemmin jatk
 
 - käyttäjä voi tarkastella muita tietokantaan rekisteröityneitä käyttäjiä
 
-- käyttäjä voi kirjautua ulos järjestelmästä
+- käyttäjä voi kirjautua ulos järjestelmästä - **Tehty**  
 
 ## Jatkokehitysideoita
 
@@ -49,4 +50,4 @@ Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seura
   - roolilla normal on oikeudet tietokannan sisällön muokkaamiseen, lisäämiseen ja poistamiseen
   - roolilla read on oikeudet vain tietokannan tarkasteluun
   
-- komponentteja on mahdollista järjestää tyypin, mallin tai valmistajan perusteella
+- komponentteja on mahdollista järjestää tyypin, mallin tai valmistajan perusteella - **Tehty**  

@@ -8,12 +8,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ComponentService implements ComponentDao {
 
     private Database database = new Database();
 
     @Override
     public void create(Component component) {
+        if (!componentIsValid(component)) {
+            System.out.println("Error adding component");
+            return;
+        }
         try {
             Statement s = database.getConnection().createStatement();
             String query = "INSERT INTO Components (type, model, manufacturer, serialnumber)" +
@@ -26,8 +31,21 @@ public class ComponentService implements ComponentDao {
             );
             System.out.println("Component added to database!");
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Error adding user");
+            System.out.println("Error adding component");
         }
+    }
+
+    public boolean componentIsValid(Component component) {
+        if (component.getType() == null) {
+            return false;
+        } else if (component.getModel().length() < 1) {
+            return false;
+        } else if (component.getManufacturer().length() < 1) {
+            return false;
+        } else if (component.getSerialNumber().length() < 1) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -51,7 +69,6 @@ public class ComponentService implements ComponentDao {
                 String model = result.getString("model");
                 String manufacturer = result.getString("manufacturer");
                 String serialnumber = result.getString("serialnumber");
-
                 components.add(new Component(type, model, manufacturer, serialnumber));
             }
         } catch (SQLException e) {

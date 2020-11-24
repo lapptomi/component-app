@@ -21,7 +21,6 @@ public class LoginControllerTest {
         this.database = new Database();
         this.userService = new UserService();
         this.database.initializeTestDatabase();
-
         UserService.loggedUser = null;
     }
 

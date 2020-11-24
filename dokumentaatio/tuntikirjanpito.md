@@ -29,4 +29,5 @@
 | 22.11 | 1h | toiminnallisuus lisätty komponenttien hakemiseen tietokannasta | 
 | 24.11 | 1h | toiminnallisuutta paranneltu komponenttien lisäämistä varten | 
 | 24.11 | 1h | checkstyle otettu käyttöön ja tyylivirheitä korjattu |  
-| yht | 36h 35min |  |
+| 24.11 | 1h | testejä kirjoitettu lisää sekä pientä ohjelman toiminnallisuuden parantamista |  
+| yht | 37h 35min |  |

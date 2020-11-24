@@ -8,10 +8,13 @@
 ###### Huom. Komennot tulee suorittaa projektin juuressa   
 
 ### Ohjelman suoritus
-Sovellus voidaan suorittaa komennolla
+Ohjelma voidaan suorittaa komennolla
 ```
 mvn compile exec:java -Dexec.mainClass=Main
 ```
+
+Suorittaessa ohjelmaa tulee käyttäjän luoda uusi tili, jolla kirjautua sisään.
+
 
 ### Testaus
 Testit voidaan suorittaa komennolla
