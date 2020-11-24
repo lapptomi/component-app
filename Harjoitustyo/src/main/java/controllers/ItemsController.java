@@ -57,8 +57,8 @@ public class ItemsController implements Initializable {
     }
 
     public void handleLogoutButtonClick() throws IOException {
-        logoutAlert.setTitle("Logout");
-        logoutAlert.setHeaderText("Are you sure you want to log out?");
+        logoutAlert.setTitle("Sign out");
+        logoutAlert.setHeaderText("Are you sure you want to sign out?");
         Optional<ButtonType> result = logoutAlert.showAndWait();
 
         if (result.get() == ButtonType.OK) {
@@ -82,9 +82,7 @@ public class ItemsController implements Initializable {
 
         ObservableList<Component> components = FXCollections.observableArrayList();
         try {
-            componentService.getAll().forEach(component -> {
-                components.add(component);
-            });
+            components.addAll(componentService.getAll());
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }

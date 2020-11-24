@@ -31,12 +31,12 @@ public class ComponentService implements ComponentDao {
     }
 
     @Override
-    public User getComponent(String serialnumber)  {
+    public User getComponent(int id)  {
         return null;
     }
 
     @Override
-    public User update(String serialnumber) {
+    public User update(int id) {
         return null;
     }
 

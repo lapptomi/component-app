@@ -47,8 +47,8 @@ public class AddItemController implements Initializable {
     ComboBox<String> componentTypeBox;
 
     public void handleLogoutButtonClick() throws IOException {
-        logoutAlert.setTitle("Logout");
-        logoutAlert.setHeaderText("Are you sure you want to log out?");
+        logoutAlert.setTitle("Sign out");
+        logoutAlert.setHeaderText("Are you sure you want to sign out?");
         Optional<ButtonType> result = logoutAlert.showAndWait();
 
         if (result.get() == ButtonType.OK) {

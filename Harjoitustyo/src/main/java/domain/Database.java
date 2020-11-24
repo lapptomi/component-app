@@ -48,6 +48,7 @@ public class Database {
             System.out.println("Creating Table: Users");
             statement.execute("CREATE TABLE Users (id INTEGER PRIMARY KEY, username TEXT NOT NULL UNIQUE, password TEXT)");
             addTestUsersToDatabase();
+
             System.out.println("Creating Table: Components");
             statement.execute("CREATE TABLE Components (id INTEGER PRIMARY KEY, type TEXT, model TEXT, manufacturer TEXT, serialnumber TEXT)");
             addTestComponentsToDatabase();

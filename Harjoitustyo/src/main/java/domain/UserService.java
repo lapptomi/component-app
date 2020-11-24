@@ -80,6 +80,7 @@ public class UserService implements UserDao {
         if (usernameIsCorrect && passwordIsCorrect) {
             return true;
         }
+
         System.out.println("Invalid username or password.");
         return false;
     }
