@@ -27,4 +27,6 @@
 | 19.11 | 2h | sivulle items luotu taulu komponenteille jossa kolumnit type, model, manufacturer ja serial number |  
 | 19.11 | 1h 30min | sivua "add items" luotu käyttöliittymään | 
 | 22.11 | 1h | toiminnallisuus lisätty komponenttien hakemiseen tietokannasta | 
-| yht | 34h 35min |  |
+| 24.11 | 1h | toiminnallisuutta paranneltu komponenttien lisäämistä varten | 
+| 24.11 | 1h | checkstyle otettu käyttöön ja tyylivirheitä korjattu |  
+| yht | 36h 35min |  |
