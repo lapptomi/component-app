@@ -42,7 +42,6 @@ public class ItemsController implements Initializable {
     @FXML
     Button removeButton;
 
-
     @FXML
     TableView<Component> componentTable;
     @FXML
@@ -53,7 +52,6 @@ public class ItemsController implements Initializable {
     TableColumn<Component, String> manufacturerColumn;
     @FXML
     TableColumn<Component, String> serialNumberColumn;
-
 
     public void handleAddItemButtonClick() throws IOException {
         Stage stage = (Stage) addItemButton.getScene().getWindow();
@@ -111,6 +109,7 @@ public class ItemsController implements Initializable {
         modelColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("model"));
         manufacturerColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("manufacturer"));
         serialNumberColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("serialNumber"));
+
         initializeComponentTable();
     }
 
