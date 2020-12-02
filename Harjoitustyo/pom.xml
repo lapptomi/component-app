@@ -68,7 +68,7 @@
                 <version>0.8.3</version>
                 <configuration>
                     <excludes>
-                        <exclude>fi.project/ui/*</exclude>
+                        <exclude>*/project/ui/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>

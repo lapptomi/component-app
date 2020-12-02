@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.SQLException;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 
@@ -26,27 +28,4 @@ public class ItemsControllerTest {
         UserService.loggedUser = null;
     }
 
-    @Test
-    public void componentsCanBeAddedToDatabase() throws SQLException, ClassNotFoundException {
-        int componentsOnStart = componentService.getAll().size();
-        Component component = new Component("1", "2", "3", "4");
-        componentService.create(component);
-        assertEquals(componentsOnStart + 1, componentService.getAll().size());
-    }
-
-    @Test
-    public void componentsCanBeFetchedFromDatabase() throws SQLException, ClassNotFoundException {
-        assertEquals(5, componentService.getAll().size());
-    }
-
-    @Test
-    public void componentsWithEmptyFieldsAreNotAddedToDatabase() throws SQLException, ClassNotFoundException {
-        int componentsOnStart = componentService.getAll().size();
-        Component component = new Component("1", "2", "3", "4");
-        componentService.create(component);
-        assertEquals(componentsOnStart + 1, componentService.getAll().size());
-        Component invalidComponent = new Component("", "", "", "");
-        componentService.create(invalidComponent);
-        assertEquals(componentsOnStart + 1, componentService.getAll().size());
-    }
 }

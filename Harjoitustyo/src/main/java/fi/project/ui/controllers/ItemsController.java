@@ -99,7 +99,6 @@ public class ItemsController implements Initializable {
         errorAlert.showAndWait();
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String text = "Logged in as: " + UserService.loggedUser;

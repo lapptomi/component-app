@@ -32,4 +32,5 @@
 | 24.11 | 1h | testejä kirjoitettu lisää sekä pientä ohjelman toiminnallisuuden parantamista |  
 | 02.12 | 1h | projektin refaktorointia sekä toteutettu mahdollisuus jar-tiedoston luomiseen |  
 | 02.12 | 2h | käyttöliittymää muokattu ja ohjelmaan lisätty mahdollisuus komponenttien poistamiseen tietokannasta |  
-| yht | 40h 35min |  |
+| 02.12 | 1h | testejä kirjoitettu sekä testikattavuudesta jätetty pois käyttöliittymän testaus |  
+| yht | 41h 35min |  |
