@@ -102,4 +102,12 @@ public class ComponentServiceTest {
         componentService.create(invalidComponent);
         assertEquals(listSizeOnStart, componentService.getAll().size());
     }
+
+    @Test
+    public void componentWithSpacesOnSerialNumberIsNotAddedToDatabase() throws SQLException, ClassNotFoundException {
+        Component invalidComponent = new Component("GPU", "model", "manufacturer", "123 123");
+        int listSizeOnStart = componentService.getAll().size();
+        componentService.create(invalidComponent);
+        assertEquals(listSizeOnStart, componentService.getAll().size());
+    }
 }

@@ -94,7 +94,7 @@ public class AddItemController implements Initializable {
     }
 
     public boolean validCredentials(String type, String model, String manufacturer, String serialNumber) {
-        return type != null && model.length() > 0 && manufacturer.length() > 0 && serialNumber.length() > 0;
+        return type != null && model.length() > 0 && manufacturer.length() > 0 && serialNumber.length() > 0 && !serialNumber.contains(" ");
     }
 
     @Override
