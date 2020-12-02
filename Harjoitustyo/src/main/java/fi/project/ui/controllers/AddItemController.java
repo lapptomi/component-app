@@ -1,8 +1,8 @@
-package controllers;
+package fi.project.ui.controllers;
 
-import domain.Component;
-import domain.ComponentService;
-import domain.UserService;
+import fi.project.domain.UserService;
+import fi.project.domain.Component;
+import fi.project.domain.ComponentService;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -1,9 +1,9 @@
-package controllers;
+package fi.project.ui.controllers;
 
-import domain.Component;
-import domain.ComponentService;
-import domain.Database;
-import domain.UserService;
+import fi.project.domain.Component;
+import fi.project.domain.ComponentService;
+import fi.project.domain.Database;
+import fi.project.domain.UserService;
 import org.junit.Before;
 import org.junit.Test;
 

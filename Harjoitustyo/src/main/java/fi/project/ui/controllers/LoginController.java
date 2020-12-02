@@ -1,11 +1,10 @@
-package controllers;
+package fi.project.ui.controllers;
 
-import domain.User;
-import domain.UserService;
+import fi.project.domain.UserService;
+import fi.project.domain.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;

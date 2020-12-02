@@ -1,6 +1,6 @@
-import ui.AppUi;
+package fi.project;
 
-import java.util.Arrays;
+import fi.project.ui.AppUi;
 
 public class Main {
     public static void main(String[] args) {

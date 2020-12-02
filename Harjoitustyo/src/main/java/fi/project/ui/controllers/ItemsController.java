@@ -1,8 +1,8 @@
-package controllers;
+package fi.project.ui.controllers;
 
-import domain.Component;
-import domain.ComponentService;
-import domain.UserService;
+import fi.project.domain.UserService;
+import fi.project.domain.Component;
+import fi.project.domain.ComponentService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 

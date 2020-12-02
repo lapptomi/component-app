@@ -1,6 +1,6 @@
-package domain;
+package fi.project.domain;
 
-import dao.ComponentDao;
+import fi.project.dao.ComponentDao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

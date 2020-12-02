@@ -1,8 +1,8 @@
-package ui;
+package fi.project.ui;
 
-import domain.Database;
-import domain.User;
-import domain.UserService;
+import fi.project.domain.Database;
+import fi.project.domain.User;
+import fi.project.domain.UserService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -1,7 +1,7 @@
-package controllers;
+package fi.project.ui.controllers;
 
-import domain.User;
-import domain.UserService;
+import fi.project.domain.UserService;
+import fi.project.domain.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

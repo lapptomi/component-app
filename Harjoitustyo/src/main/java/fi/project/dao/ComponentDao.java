@@ -1,7 +1,6 @@
-package dao;
+package fi.project.dao;
 
-import domain.Component;
-import domain.User;
+import fi.project.domain.Component;
 
 import java.sql.SQLException;
 import java.util.List;

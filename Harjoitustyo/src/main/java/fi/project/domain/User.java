@@ -1,4 +1,4 @@
-package domain;
+package fi.project.domain;
 
 public class User {
 
