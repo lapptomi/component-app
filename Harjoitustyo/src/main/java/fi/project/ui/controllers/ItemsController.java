@@ -26,6 +26,8 @@ public class ItemsController implements Initializable {
     private UserService userService = new UserService();
     private ComponentService componentService = new ComponentService();
     private Alert logoutAlert = new Alert(Alert.AlertType.CONFIRMATION);
+    private Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+    private Alert confirmRemoveAlert = new Alert(Alert.AlertType.CONFIRMATION);
 
     @FXML
     Text userLoggedInText;
@@ -35,6 +37,11 @@ public class ItemsController implements Initializable {
     Button addItemButton;
     @FXML
     Button logoutButton;
+    @FXML
+    Button editButton;
+    @FXML
+    Button removeButton;
+
 
     @FXML
     TableView<Component> componentTable;
@@ -68,6 +75,32 @@ public class ItemsController implements Initializable {
         }
     }
 
+    public void handleRemoveButtonClick() {
+        Component component = componentTable.getSelectionModel().getSelectedItem();
+        if (component == null) {
+            errorAlert.setHeaderText("Error removing component");
+            errorAlert.setContentText("Please select component from the table");
+            errorAlert.showAndWait();
+            return;
+        }
+
+        confirmRemoveAlert.setHeaderText("Are you sure you want to remove this component?");
+        Optional<ButtonType> result = confirmRemoveAlert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            try {
+                componentService.delete(component.getSerialNumber());
+                initializeComponentTable();
+            } catch (SQLException | ClassNotFoundException e) {
+                System.out.println("Error deleting component");
+            }
+        }
+    }
+
+    public void handleEditButtonClick() {
+        errorAlert.setContentText("This button does not work yet");
+        errorAlert.showAndWait();
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -78,14 +111,16 @@ public class ItemsController implements Initializable {
         modelColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("model"));
         manufacturerColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("manufacturer"));
         serialNumberColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("serialNumber"));
+        initializeComponentTable();
+    }
 
+    private void initializeComponentTable() {
         ObservableList<Component> components = FXCollections.observableArrayList();
         try {
             components.addAll(componentService.getAll());
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-
         componentTable.setItems(components);
     }
 }

@@ -30,4 +30,6 @@
 | 24.11 | 1h | toiminnallisuutta paranneltu komponenttien lisäämistä varten | 
 | 24.11 | 1h | checkstyle otettu käyttöön ja tyylivirheitä korjattu |  
 | 24.11 | 1h | testejä kirjoitettu lisää sekä pientä ohjelman toiminnallisuuden parantamista |  
-| yht | 37h 35min |  |
+| 02.12 | 1h | projektin refaktorointia sekä toteutettu mahdollisuus jar-tiedoston luomiseen |  
+| 02.12 | 2h | käyttöliittymää muokattu ja ohjelmaan lisätty mahdollisuus komponenttien poistamiseen tietokannasta |  
+| yht | 40h 35min |  |

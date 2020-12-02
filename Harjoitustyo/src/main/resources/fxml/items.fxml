@@ -80,7 +80,7 @@
             <DropShadow blurType="TWO_PASS_BOX" color="#00000090" height="22.635" radius="5.15875" width="0.0" />
          </effect>
       </AnchorPane>
-      <TableView fx:id="componentTable" layoutX="203.0" layoutY="123.0" prefHeight="313.0" prefWidth="533.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="123.0">
+      <TableView fx:id="componentTable" layoutX="203.0" layoutY="123.0" prefHeight="285.0" prefWidth="533.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="123.0">
         <columns>
           <TableColumn fx:id="typeColumn" prefWidth="100.0" resizable="false" text="Type" />
           <TableColumn fx:id="modelColumn" prefWidth="98.0" resizable="false" text="Model" />
@@ -107,5 +107,21 @@
             </Button>
          </children>
       </AnchorPane>
+      <Button fx:id="editButton" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="200.0" layoutY="423.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleEditButtonClick" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #00add2; -fx-background-radius: 0;" text="EDIT" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="removeButton" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="562.0" layoutY="423.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleRemoveButtonClick" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: red; -fx-background-radius: 0;" text="REMOVE" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

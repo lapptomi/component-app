@@ -35,6 +35,22 @@ public class ComponentService implements ComponentDao {
         }
     }
 
+    @Override
+    public void delete(String serialnumber) throws SQLException, ClassNotFoundException {
+        if (getComponent(serialnumber) == null) {
+            System.out.println("Could not find component with serialnumber" + serialnumber);
+            return;
+        }
+
+        try {
+            Statement s = database.getConnection().createStatement();
+            String query = "DELETE FROM Components WHERE serialnumber = '%s'";
+            s.execute(String.format(query, serialnumber));
+        } catch (Exception e) {
+            System.out.println("Error deleting component");
+        }
+    }
+
     public boolean componentIsValid(Component component) {
         if (component.getType() == null) {
             return false;
@@ -49,8 +65,15 @@ public class ComponentService implements ComponentDao {
     }
 
     @Override
-    public Component getComponent(int id)  {
-        return null;
+    public Component getComponent(String serialnumber) throws SQLException, ClassNotFoundException {
+        Component component = null;
+        for (Component c : getAll()) {
+            if (c.getSerialNumber().equals(serialnumber)) {
+                component = c;
+                break;
+            }
+        }
+        return component;
     }
 
     @Override

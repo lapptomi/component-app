@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface ComponentDao {
     void create(Component component);
-    Component getComponent(int id) throws SQLException, ClassNotFoundException;
+    void delete(String serialnumber) throws SQLException, ClassNotFoundException;
+    Component getComponent(String serialnumber) throws SQLException, ClassNotFoundException;
     Component update(int id);
     List<Component> getAll() throws ClassNotFoundException, SQLException;
 }

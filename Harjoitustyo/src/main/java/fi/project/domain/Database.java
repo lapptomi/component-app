@@ -49,7 +49,7 @@ public class Database {
             addTestUsersToDatabase();
 
             System.out.println("Creating Table: Components");
-            statement.execute("CREATE TABLE Components (id INTEGER PRIMARY KEY, type TEXT, model TEXT, manufacturer TEXT, serialnumber TEXT)");
+            statement.execute("CREATE TABLE Components (id INTEGER PRIMARY KEY, type TEXT, model TEXT, manufacturer TEXT, serialnumber TEXT UNIQUE)");
             addTestComponentsToDatabase();
         } catch (Exception e) {
             System.out.println("Error initializing test database");
@@ -69,7 +69,7 @@ public class Database {
         statement.execute(String.format(query, "CPU", "8400", "Intel", "2222aaaaaaa"));
         statement.execute(String.format(query, "PSU", "123", "Corsair", "999sa9dnf"));
         statement.execute(String.format(query, "CPU", "2600", "AMD", "sad8as9f"));
-        statement.execute(String.format(query, "Motherboard", "LGA1151", "Asus", "999sa9dnf"));
+        statement.execute(String.format(query, "Motherboard", "LGA1151", "Asus", "99sasda9dnf"));
     }
 
     public void initializeDatabase() {
@@ -80,12 +80,8 @@ public class Database {
             Statement statement = getConnection().createStatement();
             System.out.println("Creating Table: Users");
             statement.execute("CREATE TABLE Users (id INTEGER PRIMARY KEY, username TEXT NOT NULL UNIQUE, password TEXT)");
-
-            System.out.println("Adding user: user1, password1");
-            statement.execute("INSERT INTO Users (username, password) VALUES ('user1', 'password1')");
-
-            System.out.println("Adding user: user2, password2");
-            statement.execute("INSERT INTO Users (username, password) VALUES ('user2', 'password2')");
+            System.out.println("Creating Table: Components");
+            statement.execute("CREATE TABLE Components (id INTEGER PRIMARY KEY, type TEXT, model TEXT, manufacturer TEXT, serialnumber TEXT UNIQUE)");
         } catch (Exception e) {
             System.out.println("Error initializing database");
         }
