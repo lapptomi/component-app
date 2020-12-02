@@ -24,7 +24,7 @@
 | 16.11 | 1h | testien kirjoittamista kirjautumiseen ja rekisteröintiin liittyen | 
 | 17.11 | 3h | käyttöliittymän suunnittelua ja toteutusta sivulle home | 
 | 18.11 | 1h | käyttöliittymän parantelua | 
-| 19.11 | 2h | sivulle items luotu taulu komponenteille jossa kolumnit type, model, manufacturer ja serial number |  
+| 19.11 | 2h | sivulle items luotu taulu komponenteille jossa sarakkeet type, model, manufacturer ja serial number |  
 | 19.11 | 1h 30min | sivua "add items" luotu käyttöliittymään | 
 | 22.11 | 1h | toiminnallisuus lisätty komponenttien hakemiseen tietokannasta | 
 | 24.11 | 1h | toiminnallisuutta paranneltu komponenttien lisäämistä varten | 
