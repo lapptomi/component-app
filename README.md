@@ -16,13 +16,16 @@ mvn compile exec:java -Dexec.mainClass=fi.project.Main
 Suorittaessa ohjelmaa tulee käyttäjän luoda uusi tili, jolla kirjautua sisään.
 
 
-
 ### Suoritettavan jarin generointi  
 Suoritettava jar-tiedosto voidaan luoda komennolla  
 ```
 mvn package
 ```
 Tiedosto löytyy luomisen jälkeen polusta target/Harjoitustyo-1.0-SNAPSHOT.jar
+
+
+## Releaset
+[Viikko 5](https://github.com/lapptomi/ot-harjoitustyo/releases/tag/Viikko5)
 
 
 ### Testaus
