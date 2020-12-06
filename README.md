@@ -1,5 +1,11 @@
 # Ohjelmistotekniikka, harjoitustyö
 
+
+## Sovelluksen tarkoitus
+
+Sovelluksen tarkoituksena on toimia varastonhallintajärjestelmänä tietokoneiden komponenteille. Sovelluksessa voi lisätä, muokata sekä poistaa komponentteja tietokannasta. Sovellusta voi käyttää vain rekisteröidyt käyttäjät. 
+
+
 ## Dokumentaatio
 [Vaatimusmäärittely](https://github.com/lapptomi/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)  
 [Työkirjanpito](https://github.com/lapptomi/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
