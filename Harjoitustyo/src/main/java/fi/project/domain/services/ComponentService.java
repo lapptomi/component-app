@@ -1,6 +1,8 @@
-package fi.project.domain;
+package fi.project.domain.services;
 
 import fi.project.dao.ComponentDao;
+import fi.project.domain.Component;
+import fi.project.domain.Database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,11 +10,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * This class has methods to add, remove, edit, get and validate components.
+ */
 public class ComponentService implements ComponentDao {
 
     private Database database = new Database();
 
+    /**
+     * Adds new component to database.
+     *
+     * @param component Component to add into database
+     */
     @Override
     public void create(Component component) {
         if (!componentIsValid(component)) {
@@ -35,6 +44,12 @@ public class ComponentService implements ComponentDao {
         }
     }
 
+    /**
+     * Deletes component from database if component with serial number
+     * given exists.
+     *
+     * @param serialnumber Serial number given by user
+     */
     @Override
     public void delete(String serialnumber) throws SQLException, ClassNotFoundException {
         if (getComponent(serialnumber) == null) {
@@ -50,6 +65,12 @@ public class ComponentService implements ComponentDao {
         }
     }
 
+    /**
+     * Makes sure that component does not have any empty or null values
+     * and serial number does not contain spaces.
+     *
+     * @param component Component to validate
+     */
     public boolean componentIsValid(Component component) {
         if (component.getType() == null) {
             return false;
@@ -65,6 +86,14 @@ public class ComponentService implements ComponentDao {
         return true;
     }
 
+    /**
+     * Finds component from database by serial number given as parameter.
+     *
+     * @param serialnumber Input given by user
+     *
+     * @return Component that was found,
+     * or null if component with given serial number does not exist
+     */
     @Override
     public Component getComponent(String serialnumber) throws SQLException, ClassNotFoundException {
         Component component = null;
@@ -82,6 +111,11 @@ public class ComponentService implements ComponentDao {
         return null;
     }
 
+    /**
+     * Gets all components from database.
+     *
+     * @return List of components found from database
+     */
     @Override
     public List<Component> getAll() throws ClassNotFoundException, SQLException {
         Statement statement = database.getConnection().createStatement();

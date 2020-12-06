@@ -2,7 +2,7 @@ package fi.project.ui;
 
 import fi.project.domain.Database;
 import fi.project.domain.User;
-import fi.project.domain.UserService;
+import fi.project.domain.services.UserService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,6 +30,11 @@ public class AppUi extends Application {
             String password = user.getPassword();
             System.out.println(String.format("Username: %s Password: %s", username, password));
         }
+    }
+
+    @Override
+    public void stop() throws Exception {
+        database.initializeTestDatabase();
     }
 
     @Override

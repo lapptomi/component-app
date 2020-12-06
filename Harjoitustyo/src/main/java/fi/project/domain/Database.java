@@ -31,6 +31,7 @@ public class Database {
         return connection;
     }
 
+
     public Connection getConnection() throws ClassNotFoundException {
         return this.connection(dbUrl);
     }

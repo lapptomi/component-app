@@ -1,6 +1,6 @@
 package fi.project.ui.controllers;
 
-import fi.project.domain.UserService;
+import fi.project.domain.services.UserService;
 import fi.project.domain.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +15,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 
+
+/**
+ * This class has the functionality of register page.
+ */
 public class RegisterController {
 
     @FXML
@@ -31,6 +35,9 @@ public class RegisterController {
     Alert invalidCredentialsAlert = new Alert(Alert.AlertType.ERROR);
     Alert userCreatedAlert = new Alert(Alert.AlertType.INFORMATION);
 
+    /**
+     * Sets scene to log in page when return button is clicked.
+     */
     public void handleReturnButtonClick() throws IOException {
         Stage stage = (Stage) returnButton.getScene().getWindow();;
         Parent parent = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
@@ -38,6 +45,10 @@ public class RegisterController {
         stage.setScene(new Scene(parent));
     }
 
+    /**
+     * Adds new user to database when sign up button is clicked
+     * if valid credentials are given
+     */
     public void handleSignUpButtonClick() throws SQLException, ClassNotFoundException {
         String username = usernameField.getText();
         String password = passwordField.getText();

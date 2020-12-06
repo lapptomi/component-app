@@ -1,6 +1,8 @@
-package fi.project.domain;
+package fi.project.domain.services;
 
 import fi.project.dao.UserDao;
+import fi.project.domain.Database;
+import fi.project.domain.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,6 +10,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class has methods to add, remove, edit, get and validate users.
+ */
 public class UserService implements UserDao {
 
     public static String loggedUser = null;
@@ -17,6 +22,12 @@ public class UserService implements UserDao {
         this.database = new Database();
     }
 
+    /**
+     * Adds new user to database
+     *
+     * @param user User to add into database
+     *
+     */
     @Override
     public void create(User user) {
         if (user.getUsername().length() < 4 || user.getPassword().length() < 6) {
@@ -32,6 +43,12 @@ public class UserService implements UserDao {
         }
     }
 
+    /**
+     * Gets user from database by username.
+     *
+     * @param username Input given by user
+     *
+     */
     @Override
     public User getUser(String username) throws SQLException, ClassNotFoundException {
         User user = null;
@@ -49,6 +66,11 @@ public class UserService implements UserDao {
         return null;
     }
 
+    /**
+     * Gets all users from database.
+     *
+     * @return List of users found from database
+     */
     @Override
     public List<User> getAll() throws ClassNotFoundException, SQLException {
         Statement statement = database.getConnection().createStatement();
@@ -66,16 +88,20 @@ public class UserService implements UserDao {
         return users;
     }
 
+    /**
+     * Verifies that user exists and has correct username and password.
+     *
+     * @return True if user exists and has correct credentials, else returns false
+     */
     public boolean validCredentials(User userToCheck) throws SQLException, ClassNotFoundException {
         User user = getUser(userToCheck.getUsername());
         if (user == null) {
             System.out.println("User does not exist.");
             return false;
         }
-        String username = user.getUsername();
-        String password = user.getPassword();
-        boolean usernameIsCorrect = userToCheck.getUsername().equals(username);
-        boolean passwordIsCorrect = userToCheck.getPassword().equals(password);
+
+        boolean usernameIsCorrect = userToCheck.getUsername().equals(user.getUsername());
+        boolean passwordIsCorrect = userToCheck.getPassword().equals(user.getPassword());
 
         if (usernameIsCorrect && passwordIsCorrect) {
             return true;
@@ -85,12 +111,20 @@ public class UserService implements UserDao {
         return false;
     }
 
+    /**
+     * Logs user in if the user given as parameter has correct credentials.
+     *
+     * @param user User to log in
+     */
     public void loginUser(User user) throws SQLException, ClassNotFoundException {
         if (validCredentials(user)) {
             loggedUser = user.getUsername();
         }
     }
 
+    /**
+     * Sets loggedUser null.
+     */
     public void logoutUser() {
         loggedUser = null;
     }

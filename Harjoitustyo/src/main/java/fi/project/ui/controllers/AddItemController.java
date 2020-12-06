@@ -1,8 +1,8 @@
 package fi.project.ui.controllers;
 
-import fi.project.domain.UserService;
+import fi.project.domain.services.UserService;
 import fi.project.domain.Component;
-import fi.project.domain.ComponentService;
+import fi.project.domain.services.ComponentService;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +18,9 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * This class has the functionality of add item page.
+ */
 public class AddItemController implements Initializable {
 
     private UserService userService = new UserService();
@@ -46,6 +49,9 @@ public class AddItemController implements Initializable {
     @FXML
     ComboBox<String> componentTypeBox;
 
+    /**
+     * Logs out user and sets scene to login page.
+     */
     public void handleLogoutButtonClick() throws IOException {
         logoutAlert.setTitle("Sign out");
         logoutAlert.setHeaderText("Are you sure you want to sign out?");
@@ -59,6 +65,9 @@ public class AddItemController implements Initializable {
         }
     }
 
+    /**
+     * Clears all fields when clear button is clicked.
+     */
     public void handleClearButtonClick() {
         componentTypeBox.setValue("Type");
         modelTextField.clear();
@@ -66,6 +75,9 @@ public class AddItemController implements Initializable {
         serialNumberTextField.clear();
     }
 
+    /**
+     * Changes scene to items page when items button is clicked.
+     */
     public void handleItemsButtonClick() throws IOException {
         Stage stage = (Stage) itemsButton.getScene().getWindow();
         stage.setTitle("Items");
@@ -73,6 +85,9 @@ public class AddItemController implements Initializable {
         stage.setScene(new Scene(parent));
     }
 
+    /**
+     * Adds new component to database when add item button is clicked.
+     */
     public void handleAddItemButtonClick() {
         String type = componentTypeBox.getItems().contains(componentTypeBox.getValue())
                 ? componentTypeBox.getValue() : null;
@@ -93,10 +108,17 @@ public class AddItemController implements Initializable {
         }
     }
 
-    public boolean validCredentials(String type, String model, String manufacturer, String serialNumber) {
+    /**
+     * Checks that parameter values are not empty and type parameter is not null, and
+     * serial number does not contain spaces.
+     */
+    private boolean validCredentials(String type, String model, String manufacturer, String serialNumber) {
         return type != null && model.length() > 0 && manufacturer.length() > 0 && serialNumber.length() > 0 && !serialNumber.contains(" ");
     }
 
+    /**
+     * Sets component type values to combo box.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userLoggedInText.setText("Logged in as: " + UserService.loggedUser);

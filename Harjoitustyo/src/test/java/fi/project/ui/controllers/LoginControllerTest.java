@@ -1,6 +1,6 @@
 package fi.project.ui.controllers;
 
-import fi.project.domain.UserService;
+import fi.project.domain.services.UserService;
 import fi.project.domain.Database;
 import fi.project.domain.User;
 import org.junit.Before;

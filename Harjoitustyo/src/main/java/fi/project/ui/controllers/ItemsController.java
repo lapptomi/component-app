@@ -1,8 +1,8 @@
 package fi.project.ui.controllers;
 
-import fi.project.domain.UserService;
+import fi.project.domain.services.UserService;
 import fi.project.domain.Component;
-import fi.project.domain.ComponentService;
+import fi.project.domain.services.ComponentService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,6 +21,10 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+
+/**
+ * This class has the functionality of items page.
+ */
 public class ItemsController implements Initializable {
 
     private UserService userService = new UserService();
@@ -53,6 +57,9 @@ public class ItemsController implements Initializable {
     @FXML
     TableColumn<Component, String> serialNumberColumn;
 
+    /**
+     * Changes scene to add items page.
+     */
     public void handleAddItemButtonClick() throws IOException {
         Stage stage = (Stage) addItemButton.getScene().getWindow();
         Parent parent = FXMLLoader.load(getClass().getResource("/fxml/addItem.fxml"));
@@ -60,6 +67,9 @@ public class ItemsController implements Initializable {
         stage.setScene(new Scene(parent));
     }
 
+    /**
+     * Logs out user and sets scene to login page.
+     */
     public void handleLogoutButtonClick() throws IOException {
         logoutAlert.setTitle("Sign out");
         logoutAlert.setHeaderText("Are you sure you want to sign out?");
@@ -73,6 +83,9 @@ public class ItemsController implements Initializable {
         }
     }
 
+    /**
+     * Removes selected component from database
+     */
     public void handleRemoveButtonClick() {
         Component component = componentTable.getSelectionModel().getSelectedItem();
         if (component == null) {
@@ -94,11 +107,17 @@ public class ItemsController implements Initializable {
         }
     }
 
+    /**
+     * Shows alert that button does not work yet
+     */
     public void handleEditButtonClick() {
         errorAlert.setContentText("This button does not work yet");
         errorAlert.showAndWait();
     }
 
+    /**
+     * Initializes component table and adds components from database to it
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String text = "Logged in as: " + UserService.loggedUser;

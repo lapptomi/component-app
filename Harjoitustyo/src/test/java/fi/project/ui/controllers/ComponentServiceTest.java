@@ -1,9 +1,9 @@
 package fi.project.ui.controllers;
 
 import fi.project.domain.Component;
-import fi.project.domain.ComponentService;
+import fi.project.domain.services.ComponentService;
 import fi.project.domain.Database;
-import fi.project.domain.UserService;
+import fi.project.domain.services.UserService;
 import org.junit.Before;
 import org.junit.Test;
 

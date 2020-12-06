@@ -1,6 +1,6 @@
 package fi.project.ui.controllers;
 
-import fi.project.domain.UserService;
+import fi.project.domain.services.UserService;
 import fi.project.domain.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +16,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 
+
+/**
+ * This class has the functionality of log in page.
+ */
 public class LoginController {
 
     private UserService userService = new UserService();
@@ -32,6 +36,11 @@ public class LoginController {
 
     Alert alert = new Alert(Alert.AlertType.ERROR);
 
+    /**
+     * Logs user in if correct credentials are given.
+     * This method is called when log in button is clicked.
+     */
+    @FXML
     public void handleLoginButtonClick() throws SQLException, ClassNotFoundException, IOException {
         String username = usernameField.getText();
         String password = passwordField.getText();
@@ -55,8 +64,10 @@ public class LoginController {
         stage.setResizable(false);
     }
 
-    @FXML
-    private void handleRegisterButtonClick(ActionEvent event) throws IOException {
+    /**
+     * Sets scene to register page when sign up button is clicked.
+     */
+    public void handleRegisterButtonClick() throws IOException {
         Stage stage = (Stage) registerButton.getScene().getWindow();
         Parent parent = FXMLLoader.load(getClass().getResource("/fxml/register.fxml"));
         stage.setTitle("Sign up");
