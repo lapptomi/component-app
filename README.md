@@ -58,3 +58,11 @@ mvn jxr:jxr checkstyle:checkstyle
 Raportti tyylivirheistä löytyy polusta target/site/checkstyle.html
 
 
+### JavaDoc
+JavaDocista saa luotua HTML-version suorittamalla komennon
+
+```
+mvn javadoc:javadoc
+```
+Generoitu JavaDoc löytyy hakemistosta target/site/apidocs/
+
