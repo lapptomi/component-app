@@ -17,24 +17,17 @@ public class AppUi extends Application {
     UserService userService;
 
     @Override
-    public void init() throws Exception {
+    public void init() {
         this.userService = new UserService();
         this.database = new Database();
 
-        database.initializeTestDatabase();
+        database.deleteTestDbFile();
         database.initializeDatabase();
-
-        System.out.println("Users in database:");
-        for (User user : userService.getAll()) {
-            String username = user.getUsername();
-            String password = user.getPassword();
-            System.out.println(String.format("Username: %s Password: %s", username, password));
-        }
     }
 
     @Override
-    public void stop() throws Exception {
-        database.initializeTestDatabase();
+    public void stop() {
+        database.deleteTestDbFile();
     }
 
     @Override

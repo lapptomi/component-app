@@ -9,14 +9,18 @@ import java.sql.*;
 public class Database {
 
     private String dbUrl = null;
+    private final String databaseName = "app.db";
+    private final String testDatabaseName = "app-test.db";
 
     public Database() {
-        // Change to false if not running tests
-        boolean runInTestMode = true;
-        if (runInTestMode) {
-            dbUrl = "jdbc:sqlite:test.db";
+        String args = System.getProperty("exec.args") != null
+                ? System.getProperty("exec.args")
+                : "do not run in test mode";
+
+        if (args.equals("test")) {
+            dbUrl = "jdbc:sqlite:" + testDatabaseName;
         } else {
-            dbUrl = "jdbc:sqlite:app.db";
+            dbUrl = "jdbc:sqlite:" + databaseName;
         }
     }
 
@@ -37,19 +41,12 @@ public class Database {
     }
 
     public void initializeTestDatabase() {
-        Path path = FileSystems.getDefault().getPath("test.db");
-        try {
-            Files.delete(path);
-        } catch (IOException x) {
-            System.out.println(x.getMessage());
-        }
+        formatTestDb();
         try {
             Statement statement = getConnection().createStatement();
-            System.out.println("Creating Table: Users");
             statement.execute("CREATE TABLE Users (id INTEGER PRIMARY KEY, username TEXT NOT NULL UNIQUE, password TEXT)");
             addTestUsersToDatabase();
 
-            System.out.println("Creating Table: Components");
             statement.execute("CREATE TABLE Components (id INTEGER PRIMARY KEY, type TEXT, model TEXT, manufacturer TEXT, serialnumber TEXT UNIQUE)");
             addTestComponentsToDatabase();
         } catch (Exception e) {
@@ -57,7 +54,17 @@ public class Database {
         }
     }
 
-    public void addTestUsersToDatabase() throws ClassNotFoundException, SQLException {
+    private void formatTestDb() {
+        try {
+            Statement statement = getConnection().createStatement();
+            statement.execute("DROP TABLE Users");
+            statement.execute("DROP TABLE Components");
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Error formatting test database");
+        }
+    }
+
+    private void addTestUsersToDatabase() throws ClassNotFoundException, SQLException {
         Statement statement = getConnection().createStatement();
         statement.execute("INSERT INTO Users (username, password) VALUES ('testUser1', 'password1')");
         statement.execute("INSERT INTO Users (username, password) VALUES ('testUser2', 'password2')");
@@ -73,10 +80,16 @@ public class Database {
         statement.execute(String.format(query, "Motherboard", "LGA1151", "Asus", "99sasda9dnf"));
     }
 
-    public void initializeDatabase() {
-        if (dbUrl != null) {
-            return;
+    public void deleteTestDbFile() {
+        Path path = FileSystems.getDefault().getPath(testDatabaseName);
+        try {
+            Files.delete(path);
+        } catch (IOException x) {
+            System.out.println(x.getMessage());
         }
+    }
+
+    public void initializeDatabase() {
         try {
             Statement statement = getConnection().createStatement();
             System.out.println("Creating Table: Users");

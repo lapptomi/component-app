@@ -20,6 +20,8 @@ public class ComponentServiceTest {
 
     @Before
     public void setUp() {
+        System.setProperty("exec.args", "test");
+
         this.database = new Database();
         this.userService = new UserService();
         this.componentService = new ComponentService();
@@ -30,7 +32,7 @@ public class ComponentServiceTest {
     @Test
     public void componentsCanBeAddedToDatabase() throws SQLException, ClassNotFoundException {
         int componentsOnStart = componentService.getAll().size();
-        Component component = new Component("1", "2", "3", "4");
+        Component component = new Component("11", "2", "3", "4");
         componentService.create(component);
         assertEquals(componentsOnStart + 1, componentService.getAll().size());
     }
@@ -43,7 +45,7 @@ public class ComponentServiceTest {
     @Test
     public void componentsWithEmptyFieldsAreNotAddedToDatabase() throws SQLException, ClassNotFoundException {
         int componentsOnStart = componentService.getAll().size();
-        Component component = new Component("1", "2", "3", "4");
+        Component component = new Component("12", "2", "3", "4");
         componentService.create(component);
         assertEquals(componentsOnStart + 1, componentService.getAll().size());
         Component invalidComponent = new Component("", "", "", "");

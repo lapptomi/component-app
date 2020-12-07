@@ -18,6 +18,8 @@ public class LoginControllerTest {
 
     @Before
     public void setUp() {
+        System.setProperty("exec.args", "test");
+
         this.database = new Database();
         this.userService = new UserService();
         this.database.initializeTestDatabase();

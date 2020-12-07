@@ -72,7 +72,7 @@ public class ComponentService implements ComponentDao {
      * @param component Component to validate
      */
     public boolean componentIsValid(Component component) {
-        if (component.getType() == null) {
+        if (component.getType() == null || component.getType().length() < 1) {
             return false;
         } else if (component.getModel() == null || component.getModel().length() < 1) {
             return false;
