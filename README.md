@@ -21,6 +21,12 @@ mvn compile exec:java -Dexec.mainClass=fi.project.Main
 
 Suorittaessa ohjelmaa tulee käyttäjän luoda uusi tili, jolla kirjautua sisään.
 
+Ohjelma voidaan myös suorittaa seuraavalla komennolla tilassa, jossa tiedot ovat vain  
+väliaikaisia, eli poistuvat ohjelman sammuttamisen yhteydessä
+```
+mvn compile exec:java -Dexec.args="test" -Dexec.mainClass=fi.project.Main
+```
+
 
 ### Suoritettavan jarin generointi  
 Suoritettava jar-tiedosto voidaan luoda komennolla  
