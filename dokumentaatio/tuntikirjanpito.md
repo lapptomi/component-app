@@ -34,4 +34,6 @@
 | 02.12 | 2h | käyttöliittymää muokattu ja ohjelmaan lisätty mahdollisuus komponenttien poistamiseen tietokannasta |  
 | 02.12 | 1h | testejä kirjoitettu sekä testikattavuudesta jätetty pois käyttöliittymän testaus |  
 | 06.12 | 4h | tutustuminen JavaDoc:iin sekä JavaDoc-kuvauksia tehty muutamille luokille ja niiden metodeille | 
-| yht | 45h 35min |  |
+| 07.12 | 2h | sovelluksen refaktorointia | 
+| 07.12 | 1h | käyttöliittymän korjausta | 
+| yht | 48h 35min |  |
