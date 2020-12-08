@@ -3,7 +3,7 @@
 ## Rakenne
 Ohjelman rakenne noudattelee kolmitasoista kerrosarkkitehtuuria, ja koodin pakkausrakenne on seuraava:
 
-<img src="https://github.com/lapptomi/ot-harjoitustyo/tree/master/dokumentaatio/kuvat/1.png" width="750">
+<img src="https://github.com/lapptomi/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/pic1.png" width="750">
 
 Pakkaus _fi.project.ui_ sisältää JavaFX:llä toteutetun käyttöliittymän _fi.project.domain_ sovelluslogiikan ja tietojen tallennuksen sekä _fi.project.dao_ dao rajapinnat.
 
@@ -24,12 +24,13 @@ Käyttöliittymä on eristetty sovelluslogiikasta, eli käyttöliittymää kontr
 ## Sovelluslogiikka
 Sovelluksen loogisen datamallin muodostavat luokat User ja Component, jotka kuvaavat käyttäjiä ja komponentteja.
 
-<img src="https://github.com/lapptomi/ot-harjoitustyo/tree/master/dokumentaatio/kuvat/2.png" width="750">
+<img src="https://github.com/lapptomi/ot-harjoitustyo/tree/master/dokumentaatio/kuvat/pic2.png" width="750">
 
 Luokkien toiminnallisuudesta vastaavat luokat UserService sekä ComponentService. Luokat tarjoavat toiminnot esimerkiksi käyttäjien ja komponenttien lisäämiseen, poistamiseen, muokkaamiseen, sekä hakemiseen.
 
 Ohjelman osien suhdetta kuvaava luokka/pakkauskaavio:
-<img src="https://github.com/lapptomi/ot-harjoitustyo/tree/master/dokumentaatio/kuvat/3.png" width="750">
+
+<img src="https://github.com/lapptomi/ot-harjoitustyo/tree/master/dokumentaatio/kuvat/pic3.png" width="750">
 
 Pakkauksen fi.project.domain.services luokat UserService ja ComponentService huolehtivat tietojen lisäämisestä, muokkaamisesta, poistamisesta ja hakemisesta tietokannasta. Kyseisiä toimintoja varten toteuttaa luokat rajapinnat UserDao sekä ComponentDao.
 
