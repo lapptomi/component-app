@@ -1,4 +1,4 @@
-package fi.project.ui.controllers;
+package services;
 
 import fi.project.domain.Component;
 import fi.project.domain.services.ComponentService;
@@ -108,6 +108,29 @@ public class ComponentServiceTest {
     @Test
     public void componentWithSpacesOnSerialNumberIsNotAddedToDatabase() throws SQLException, ClassNotFoundException {
         Component invalidComponent = new Component("GPU", "model", "manufacturer", "123 123");
+        int listSizeOnStart = componentService.getAll().size();
+        componentService.create(invalidComponent);
+        assertEquals(listSizeOnStart, componentService.getAll().size());
+    }
+
+    @Test
+    public void componentWithNullSerialNumberCannotBeDeleted() throws SQLException, ClassNotFoundException {
+        int listSizeOnStart = componentService.getAll().size();
+        componentService.delete(null);
+        assertEquals(listSizeOnStart, componentService.getAll().size());
+    }
+
+    @Test
+    public void componentWithNullManufacturerIsNotAddedToDb() throws SQLException, ClassNotFoundException {
+        Component invalidComponent = new Component("GPU", "model", null, "123123");
+        int listSizeOnStart = componentService.getAll().size();
+        componentService.create(invalidComponent);
+        assertEquals(listSizeOnStart, componentService.getAll().size());
+    }
+
+    @Test
+    public void componentWithNullModelIsNotAddedToDb() throws SQLException, ClassNotFoundException {
+        Component invalidComponent = new Component("GPU", null, "manufacturer", "123123");
         int listSizeOnStart = componentService.getAll().size();
         componentService.create(invalidComponent);
         assertEquals(listSizeOnStart, componentService.getAll().size());
