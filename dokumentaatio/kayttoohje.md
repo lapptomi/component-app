@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa jar-tiedosto [component-app.jar](https://github.com/lapptomi/ot-harjoitustyo/releases/tag/Viikko5)
+Lataa jar-tiedosto [component-app.jar](https://github.com/lapptomi/ot-harjoitustyo/releases/tag/viikko6)
 
 
 ## Ohjelman käynnistäminen
