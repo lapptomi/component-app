@@ -24,13 +24,13 @@ Käyttöliittymä on eristetty sovelluslogiikasta, eli käyttöliittymää kontr
 ## Sovelluslogiikka
 Sovelluksen loogisen datamallin muodostavat luokat User ja Component, jotka kuvaavat käyttäjiä ja komponentteja.
 
-<img src="https://github.com/lapptomi/ot-harjoitustyo/tree/master/dokumentaatio/kuvat/pic2.png" width="750">
+<img src="https://github.com/lapptomi/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/pic2.png" width="750">
 
 Luokkien toiminnallisuudesta vastaavat luokat UserService sekä ComponentService. Luokat tarjoavat toiminnot esimerkiksi käyttäjien ja komponenttien lisäämiseen, poistamiseen, muokkaamiseen, sekä hakemiseen.
 
 Ohjelman osien suhdetta kuvaava luokka/pakkauskaavio:
 
-<img src="https://github.com/lapptomi/ot-harjoitustyo/tree/master/dokumentaatio/kuvat/pic3.png" width="750">
+<img src="https://github.com/lapptomi/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/pic3.png" width="750">
 
 Pakkauksen fi.project.domain.services luokat UserService ja ComponentService huolehtivat tietojen lisäämisestä, muokkaamisesta, poistamisesta ja hakemisesta tietokannasta. Kyseisiä toimintoja varten toteuttaa luokat rajapinnat UserDao sekä ComponentDao.
 
@@ -43,12 +43,12 @@ Kuvataan seuraavaksi sovelluksen toimintalogiikka muutaman päätoiminnallisuude
 
 #### käyttäjän kirjautuminen
 Kun kirjautumisnäkymässä syötekenttään on kirjoutettu käyttäjätunnus ja klikataan painiketta log in etenee sovelluksen kontrolli seuraavasti:
-<img src="https://github.com/lapptomi/ot-harjoitustyo/tree/master/dokumentaatio/kuvat/login.png" width="750">
+<img src="https://github.com/lapptomi/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/login.png" width="750">
 
 Painikkeen painamiseen reagoiva tapahtumankäsittelijä kutsuu sovelluslogiikan metodia validCredentials antaen parametriksi kirjautuneen käyttäjätunnuksen. Seuraavaksi sovelluslogiikka selvittää UserService:n avulla onko käyttäjätunnus olemassa. Jos on, eli kirjautuminen onnistuu, vaihtuu käyttöliittymän näkymä items.fxml-tiedostosta luotuun sceneen. Kyseinen scene sisältää listan tietokannassa olevista komponenteista.
 
 #### uuden käyttäjän luominen
-<img src="https://github.com/lapptomi/ot-harjoitustyo/tree/master/dokumentaatio/kuvat/create-user.png" width="750">
+<img src="https://github.com/lapptomi/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/create-user.png" width="750">
 
 Käyttäjän syöttäessä tiedot lomakkeeseen ja painamalla sign up painiketta kutsutaan sovelluslogiikan metodia getUser joka varmistaa, että kättäjänimeä ei ole varattu. Jos käyttäjänimeä ei ole varattu luodaan uusi käyttäjä kutsumalla metodia createUser, jolloin käyttäjä tallentuu tietokantaan.
 
