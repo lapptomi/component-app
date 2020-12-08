@@ -108,6 +108,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>component-app</finalName>
     </build>
 
     <properties>
