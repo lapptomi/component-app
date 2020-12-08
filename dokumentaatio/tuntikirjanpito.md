@@ -36,4 +36,5 @@
 | 06.12 | 4h | tutustuminen JavaDoc:iin sekä JavaDoc-kuvauksia tehty muutamille luokille ja niiden metodeille | 
 | 07.12 | 2h | sovelluksen refaktorointia | 
 | 07.12 | 1h | käyttöliittymän korjausta | 
-| yht | 48h 35min |  |
+| 08.12 | 2h | käyttöliittymän luomista käyttäjien listaamista varten ja kontrolleri luotu kyseiselle käyttöliittymälle | 
+| yht | 50h 35min |  |
