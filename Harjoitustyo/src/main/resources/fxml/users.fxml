@@ -12,13 +12,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.project.ui.controllers.ItemsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.project.ui.controllers.UsersController">
    <children>
       <VBox prefHeight="517.0" prefWidth="143.0" style="-fx-background-color: #01cafe;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" prefHeight="82.0" prefWidth="143.0">
                <children>
-                  <Text fx:id="itemsPageTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ITEMS" textAlignment="CENTER">
+                  <Text fx:id="itemsPageTitle" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="USERS" textAlignment="CENTER">
                      <font>
                         <Font size="23.0" />
                      </font>
@@ -27,23 +27,13 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="53.0" prefWidth="143.0">
                <children>
-                <Button fx:id="itemsButton" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="143.0" style="-fx-background-color: rgba(21, 57, 76, 0.71); -fx-background-radius: 0;" textFill="WHITE">
+                <Button fx:id="itemsButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleItemsButtonClick" prefHeight="38.0" prefWidth="143.0" style="-fx-background-color: rgba(21, 57, 76, 0.71); -fx-background-radius: 0;" text="ITEMS" textFill="WHITE">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="16.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
-                     <graphic>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ITEMS">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                     </graphic>
-                     <effect>
-                        <Bloom />
-                     </effect>
                   </Button>
                </children>
             </HBox>
@@ -61,7 +51,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="53.0" prefWidth="143.0">
                <children>
-                  <Button fx:id="usersButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleUsersButtonClick" prefHeight="38.0" prefWidth="143.0" style="-fx-background-color: rgba(21, 57, 76, 0.71); -fx-background-radius: 0;" textFill="WHITE">
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="143.0" style="-fx-background-color: rgba(21, 57, 76, 0.71); -fx-background-radius: 0;" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -75,6 +65,9 @@
                            </font>
                         </Text>
                      </graphic>
+                     <effect>
+                        <Bloom />
+                     </effect>
                   </Button>
                </children>
             </HBox>
@@ -99,12 +92,9 @@
             <DropShadow blurType="TWO_PASS_BOX" color="#00000090" height="22.635" radius="5.15875" width="0.0" />
          </effect>
       </AnchorPane>
-      <TableView fx:id="componentTable" layoutX="203.0" layoutY="123.0" prefHeight="285.0" prefWidth="533.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="123.0">
+      <TableView fx:id="userTable" layoutX="203.0" layoutY="123.0" prefHeight="285.0" prefWidth="533.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="123.0">
         <columns>
-          <TableColumn fx:id="typeColumn" prefWidth="100.0" resizable="false" text="Type" />
-          <TableColumn fx:id="modelColumn" prefWidth="98.0" resizable="false" text="Model" />
-            <TableColumn fx:id="manufacturerColumn" editable="false" prefWidth="132.0" resizable="false" text="Manufacturer" />
-            <TableColumn fx:id="serialNumberColumn" maxWidth="1.7976931348623157E308" prefWidth="200.0" resizable="false" text="Serial number" />
+          <TableColumn fx:id="usernameColumn" prefWidth="532.0" resizable="false" text="Username" />
         </columns>
       </TableView>
       <AnchorPane layoutX="200.0" layoutY="84.0" prefHeight="38.0" prefWidth="533.0" style="-fx-background-color: rgba(115, 115, 115, 0.48);" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="85.0">
@@ -117,7 +107,7 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
                <graphic>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="COMPONENTS IN DATABASE">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="USERS IN DATABASE">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -126,21 +116,5 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="editButton" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="200.0" layoutY="423.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleEditButtonClick" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #00add2; -fx-background-radius: 0;" text="EDIT" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button fx:id="removeButton" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="562.0" layoutY="423.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleRemoveButtonClick" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: red; -fx-background-radius: 0;" text="REMOVE" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
    </children>
 </AnchorPane>

@@ -39,6 +39,8 @@ public class AddItemController implements Initializable {
     Button addItemButton;
     @FXML
     Button logoutButton;
+    @FXML
+    Button usersButton;
 
     @FXML
     TextField modelTextField;
@@ -86,6 +88,18 @@ public class AddItemController implements Initializable {
         Stage stage = (Stage) itemsButton.getScene().getWindow();
         stage.setTitle("Items");
         Parent parent = FXMLLoader.load(getClass().getResource("/fxml/items.fxml"));
+        stage.setScene(new Scene(parent));
+    }
+
+    /**
+     * Changes scene to users page.
+     *
+     * @throws IOException if addItem.fxml is not found.
+     */
+    public void handleUsersButtonClick() throws IOException {
+        Stage stage = (Stage) addItemButton.getScene().getWindow();
+        Parent parent = FXMLLoader.load(getClass().getResource("/fxml/users.fxml"));
+        stage.setTitle("Users");
         stage.setScene(new Scene(parent));
     }
 

@@ -66,6 +66,25 @@
                   </Button>
                </children>
             </HBox>
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="143.0">
+               <children>
+                  <Button fx:id="usersButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleUsersButtonClick" prefHeight="38.0" prefWidth="143.0" style="-fx-background-color: rgba(21, 57, 76, 0.71); -fx-background-radius: 0;" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="USERS">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
          </children>
          <effect>
             <DropShadow />
