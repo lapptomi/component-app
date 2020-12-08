@@ -48,6 +48,8 @@ public class UserService implements UserDao {
      *
      * @param username Input given by user
      *
+     * @throws ClassNotFoundException if method getAll throws exception.
+     * @throws SQLException if method getAll throws exception.
      */
     @Override
     public User getUser(String username) throws SQLException, ClassNotFoundException {
@@ -70,6 +72,9 @@ public class UserService implements UserDao {
      * Gets all users from database.
      *
      * @return List of users found from database
+     *
+     * @throws ClassNotFoundException if getConnection throws exception.
+     * @throws SQLException if getConnection throws exception.
      */
     @Override
     public List<User> getAll() throws ClassNotFoundException, SQLException {
@@ -91,7 +96,12 @@ public class UserService implements UserDao {
     /**
      * Verifies that user exists and has correct username and password.
      *
+     * @param userToCheck User to verify
+     *
      * @return True if user exists and has correct credentials, else returns false
+     *
+     * @throws ClassNotFoundException if method getUser throws exception.
+     * @throws SQLException if method getUser throws exception.
      */
     public boolean validCredentials(User userToCheck) throws SQLException, ClassNotFoundException {
         User user = getUser(userToCheck.getUsername());
@@ -115,6 +125,9 @@ public class UserService implements UserDao {
      * Logs user in if the user given as parameter has correct credentials.
      *
      * @param user User to log in
+     *
+     * @throws ClassNotFoundException if method validCredentials throws exception.
+     * @throws SQLException if method validCredentials throws exception.
      */
     public void loginUser(User user) throws SQLException, ClassNotFoundException {
         if (validCredentials(user)) {

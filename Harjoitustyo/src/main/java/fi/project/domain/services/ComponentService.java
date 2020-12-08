@@ -49,6 +49,9 @@ public class ComponentService implements ComponentDao {
      * given exists.
      *
      * @param serialnumber Serial number given by user
+     *
+     * @throws ClassNotFoundException if method getComponent throws exception.
+     * @throws SQLException if method getComponent throws exception.
      */
     @Override
     public void delete(String serialnumber) throws SQLException, ClassNotFoundException {
@@ -70,6 +73,8 @@ public class ComponentService implements ComponentDao {
      * and serial number does not contain spaces.
      *
      * @param component Component to validate
+     *
+     * @return True if component is valid, else returns false
      */
     public boolean componentIsValid(Component component) {
         if (component.getType() == null || component.getType().length() < 1) {
@@ -93,6 +98,9 @@ public class ComponentService implements ComponentDao {
      *
      * @return Component that was found,
      * or null if component with given serial number does not exist
+     *
+     * @throws ClassNotFoundException if method getAll throws exception.
+     * @throws SQLException if method getAll throws exception.
      */
     @Override
     public Component getComponent(String serialnumber) throws SQLException, ClassNotFoundException {
@@ -115,9 +123,12 @@ public class ComponentService implements ComponentDao {
      * Gets all components from database.
      *
      * @return List of components found from database
+     *
+     * @throws ClassNotFoundException if getConnection throws exception.
+     * @throws SQLException if getConnection throws exception.
      */
     @Override
-    public List<Component> getAll() throws ClassNotFoundException, SQLException {
+    public List<Component> getAll() throws SQLException, ClassNotFoundException {
         Statement statement = database.getConnection().createStatement();
         List<Component> components = new ArrayList<>();
         try {

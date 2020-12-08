@@ -39,6 +39,10 @@ public class LoginController {
     /**
      * Logs user in if correct credentials are given.
      * This method is called when log in button is clicked.
+     *
+     * @throws ClassNotFoundException if method loginUser or validCredentials fails.
+     * @throws SQLException if method loginUser or validCredentials fails.
+     * @throws IOException if items.fxml is not found.
      */
     @FXML
     public void handleLoginButtonClick() throws SQLException, ClassNotFoundException, IOException {
@@ -66,6 +70,7 @@ public class LoginController {
 
     /**
      * Sets scene to register page when sign up button is clicked.
+     * @throws IOException if register.fxml is not found.
      */
     public void handleRegisterButtonClick() throws IOException {
         Stage stage = (Stage) registerButton.getScene().getWindow();

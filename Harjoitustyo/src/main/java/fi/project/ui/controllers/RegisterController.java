@@ -37,6 +37,8 @@ public class RegisterController {
 
     /**
      * Sets scene to log in page when return button is clicked.
+     *
+     * @throws IOException if login.fxml is not found.
      */
     public void handleReturnButtonClick() throws IOException {
         Stage stage = (Stage) returnButton.getScene().getWindow();;
@@ -48,6 +50,8 @@ public class RegisterController {
     /**
      * Adds new user to database when sign up button is clicked
      * if valid credentials are given
+     * @throws SQLException if method getUser throws exception.
+     * @throws ClassNotFoundException if method getUser throws exception.
      */
     public void handleSignUpButtonClick() throws SQLException, ClassNotFoundException {
         String username = usernameField.getText();

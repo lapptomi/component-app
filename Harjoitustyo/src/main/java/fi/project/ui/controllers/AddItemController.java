@@ -51,6 +51,8 @@ public class AddItemController implements Initializable {
 
     /**
      * Logs out user and sets scene to login page.
+     *
+     * @throws IOException if login.fxml is not found.
      */
     public void handleLogoutButtonClick() throws IOException {
         logoutAlert.setTitle("Sign out");
@@ -77,6 +79,8 @@ public class AddItemController implements Initializable {
 
     /**
      * Changes scene to items page when items button is clicked.
+     *
+     * @throws IOException if items.fxml is not found.
      */
     public void handleItemsButtonClick() throws IOException {
         Stage stage = (Stage) itemsButton.getScene().getWindow();
@@ -109,7 +113,7 @@ public class AddItemController implements Initializable {
     }
 
     /**
-     * Checks that parameter values are not empty and type parameter is not null, and
+     * Checks that parameter values are not empty and type parameter is not null, and that
      * serial number does not contain spaces.
      */
     private boolean validCredentials(String type, String model, String manufacturer, String serialNumber) {

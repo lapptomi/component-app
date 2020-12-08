@@ -59,6 +59,8 @@ public class ItemsController implements Initializable {
 
     /**
      * Changes scene to add items page.
+     *
+     * @throws IOException if addItem.fxml is not found.
      */
     public void handleAddItemButtonClick() throws IOException {
         Stage stage = (Stage) addItemButton.getScene().getWindow();
@@ -69,6 +71,8 @@ public class ItemsController implements Initializable {
 
     /**
      * Logs out user and sets scene to login page.
+     *
+     * @throws IOException if login.fxml is not found.
      */
     public void handleLogoutButtonClick() throws IOException {
         logoutAlert.setTitle("Sign out");
