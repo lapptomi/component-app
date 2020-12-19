@@ -26,6 +26,7 @@ public class ComponentServiceTest {
         this.userService = new UserService();
         this.componentService = new ComponentService();
         database.initializeTestDatabase();
+
         UserService.loggedUser = null;
     }
 

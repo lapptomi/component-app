@@ -23,7 +23,6 @@ public class AppUi extends Application {
 
         database.deleteTestDbFile();
         database.initializeDatabase();
-        database.initializeTestDatabase();
     }
 
     @Override

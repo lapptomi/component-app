@@ -57,6 +57,9 @@ public class LoginController {
         } else if (userService.validCredentials(user)) {
             userService.loginUser(user);
         }
+        if (UserService.loggedUser == null) {
+            return;
+        }
 
         Stage stage = (Stage) loginButton.getScene().getWindow();
         Parent parent = FXMLLoader.load(getClass().getResource("/fxml/items.fxml"));
