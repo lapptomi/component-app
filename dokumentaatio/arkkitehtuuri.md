@@ -26,7 +26,7 @@ Sovelluksen loogisen datamallin muodostavat luokat User ja Component, jotka kuva
 
 <img src="https://github.com/lapptomi/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/pic2.png" width="750">
 
-Luokkien toiminnallisuudesta vastaavat luokat UserService sekä ComponentService. Luokat tarjoavat toiminnot esimerkiksi käyttäjien ja komponenttien lisäämiseen, poistamiseen, muokkaamiseen, sekä hakemiseen.
+Luokkien toiminnallisuudesta vastaavat luokat UserService sekä ComponentService. Luokat tarjoavat toiminnot esimerkiksi käyttäjien ja komponenttien lisäämiseen, poistamiseen, muokkaamiseen sekä hakemiseen.
 
 Ohjelman osien suhdetta kuvaava luokka/pakkauskaavio:
 
