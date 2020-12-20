@@ -150,9 +150,6 @@ public class ComponentService implements ComponentDao {
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error saving changes");
         }
-
-        for (Component c : components) {
-            create(c);
-        }
+        components.forEach(component -> create(component));
     }
 }
