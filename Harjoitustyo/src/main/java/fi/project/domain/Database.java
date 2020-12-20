@@ -97,7 +97,7 @@ public class Database {
             System.out.println("Creating Table: Components");
             statement.execute("CREATE TABLE Components (id INTEGER PRIMARY KEY, type TEXT, model TEXT, manufacturer TEXT, serialnumber TEXT UNIQUE)");
         } catch (Exception e) {
-            System.out.println("Error initializing database");
+            System.out.println("Database is already existing");
         }
     }
 }

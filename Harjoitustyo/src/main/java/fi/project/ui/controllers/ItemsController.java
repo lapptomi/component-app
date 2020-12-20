@@ -12,12 +12,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -31,7 +33,8 @@ public class ItemsController implements Initializable {
     private ComponentService componentService = new ComponentService();
     private Alert logoutAlert = new Alert(Alert.AlertType.CONFIRMATION);
     private Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-    private Alert confirmRemoveAlert = new Alert(Alert.AlertType.CONFIRMATION);
+    private Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+
 
     @FXML
     Text userLoggedInText;
@@ -42,7 +45,7 @@ public class ItemsController implements Initializable {
     @FXML
     Button logoutButton;
     @FXML
-    Button editButton;
+    Button saveButton;
     @FXML
     Button removeButton;
     @FXML
@@ -113,8 +116,8 @@ public class ItemsController implements Initializable {
             return;
         }
 
-        confirmRemoveAlert.setHeaderText("Are you sure you want to remove this component?");
-        Optional<ButtonType> result = confirmRemoveAlert.showAndWait();
+        confirmAlert.setHeaderText("Are you sure you want to remove this component?");
+        Optional<ButtonType> result = confirmAlert.showAndWait();
         if (result.get() == ButtonType.OK) {
             try {
                 componentService.delete(component.getSerialNumber());
@@ -126,11 +129,29 @@ public class ItemsController implements Initializable {
     }
 
     /**
-     * Shows alert that button does not work yet
+     * Saves changes to database if changes are valid
      */
-    public void handleEditButtonClick() {
-        errorAlert.setContentText("This button does not work yet");
-        errorAlert.showAndWait();
+    public void handleSaveButtonClick() {
+        boolean componentsAreValid = true;
+        List<Component> components = componentTable.getItems();
+
+        for (Component component : components) {
+            if (!validCredentials(component)) {
+                componentsAreValid = false;
+                break;
+            }
+        }
+
+        confirmAlert.setHeaderText("Save changes?");
+        Optional<ButtonType> result = confirmAlert.showAndWait();
+        if (result.get() == ButtonType.OK && componentsAreValid) {
+            componentService.saveChanges(components);
+        } else {
+            errorAlert.setHeaderText("Error saving changes");
+            errorAlert.setContentText("Check that fields are not empty");
+            errorAlert.showAndWait();
+        }
+        initializeComponentTable();
     }
 
     /**
@@ -141,10 +162,10 @@ public class ItemsController implements Initializable {
         String text = "Logged in as: " + UserService.loggedUser;
         userLoggedInText.setText(text);
 
-        typeColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("type"));
-        modelColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("model"));
-        manufacturerColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("manufacturer"));
-        serialNumberColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("serialNumber"));
+        initTypeColumn();
+        initModelColumn();
+        initManufacturerColumn();
+        initSerialNumberColumn();
 
         initializeComponentTable();
     }
@@ -157,5 +178,65 @@ public class ItemsController implements Initializable {
             e.printStackTrace();
         }
         componentTable.setItems(components);
+    }
+
+    private void initTypeColumn() {
+        typeColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("type"));
+        typeColumn.setCellFactory(TextFieldTableCell.<Component>forTableColumn());
+        typeColumn.setOnEditCommit(
+                (TableColumn.CellEditEvent<Component, String> t) -> {
+                    ((Component) t.getTableView().getItems().get(
+                            t.getTablePosition().getRow())
+                    ).setType(t.getNewValue());
+                }
+        );
+    }
+
+    private void initModelColumn() {
+        modelColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("model"));
+        modelColumn.setCellFactory(TextFieldTableCell.<Component>forTableColumn());
+        modelColumn.setOnEditCommit(
+            (TableColumn.CellEditEvent<Component, String> t) -> {
+                ((Component) t.getTableView().getItems().get(
+                        t.getTablePosition().getRow())
+                ).setModel(t.getNewValue());
+            }
+        );
+    }
+
+    private void initManufacturerColumn() {
+        manufacturerColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("manufacturer"));
+        manufacturerColumn.setCellFactory(TextFieldTableCell.<Component>forTableColumn());
+        manufacturerColumn.setOnEditCommit(
+            (TableColumn.CellEditEvent<Component, String> t) -> {
+                ((Component) t.getTableView().getItems().get(
+                        t.getTablePosition().getRow())
+                ).setManufacturer(t.getNewValue());
+            }
+        );
+    }
+
+    private void initSerialNumberColumn() {
+        serialNumberColumn.setCellValueFactory(new PropertyValueFactory<Component, String>("serialNumber"));
+        serialNumberColumn.setCellFactory(TextFieldTableCell.<Component>forTableColumn());
+        serialNumberColumn.setOnEditCommit(
+            (TableColumn.CellEditEvent<Component, String> t) -> {
+                ((Component) t.getTableView().getItems().get(
+                        t.getTablePosition().getRow())
+                ).setSerialNumber(t.getNewValue());
+            }
+        );
+    }
+
+    /**
+     * Checks that parameter values are not empty and type parameter is not null, and that
+     * serial number does not contain spaces.
+     */
+    private boolean validCredentials(Component component) {
+        return component.getType() != null
+                && component.getModel().length() > 0
+                && component.getManufacturer().length() > 0
+                && component.getSerialNumber().length() > 0
+                && !component.getSerialNumber().contains(" ");
     }
 }

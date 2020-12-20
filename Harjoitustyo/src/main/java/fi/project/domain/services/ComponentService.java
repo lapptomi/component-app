@@ -114,11 +114,6 @@ public class ComponentService implements ComponentDao {
         return component;
     }
 
-    @Override
-    public Component update(int id) {
-        return null;
-    }
-
     /**
      * Gets all components from database.
      *
@@ -144,5 +139,21 @@ public class ComponentService implements ComponentDao {
             System.out.println(e.getMessage());
         }
         return components;
+    }
+
+    /**
+     * Saves updated components to database
+     */
+    public void saveChanges(List<Component> components) {
+        try {
+            Statement statement = database.getConnection().createStatement();
+            statement.execute("DELETE FROM Components");
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error saving changes");
+        }
+
+        for (Component c : components) {
+            create(c);
+        }
     }
 }
