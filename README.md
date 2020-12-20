@@ -30,7 +30,7 @@ Suoritettava jar-tiedosto voidaan luoda komennolla
 ```
 mvn package
 ```
-Tiedosto löytyy luomisen jälkeen polusta target/Harjoitustyo-1.0-SNAPSHOT.jar
+Tiedosto löytyy luomisen jälkeen polusta target/component-app.jar
 
 
 ## Releaset
