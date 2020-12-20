@@ -11,6 +11,7 @@ Ohjelma voidaan käynnistää komennolla
 java -jar component-app.jar
 ```
 Ohjelman voi myös käynnistää tuplaklikkaamalla kuvaketta.
+###### Huom. kuvakkeen avulla käynnistäessä ohjelmaa saattaa sovellus ottaa testaamiseen tarkoitetun tietokannan käyttöön, joten on suositeltavaa käynnistää ohjelma komentoriviltä
 
 ## Kirjautuminen
 
@@ -37,8 +38,8 @@ Onnistuneen kirjautumisen myötä siirrytään näkymään jossa on lista tietok
 
 Näkymä mahdollistaa komponenttien poistamisen tietokannasta painikkeella _remove_. Taulusta tulee olla komponentti valittuna, joka halutaan poistaa tietokannasta.
 
-Komponentteja voi myös tulevaisuudessa muokata painikkeella _edit_, mutta tällä hetkellä toiminnallisuutta tähän ei ole luotu.
+Komponentteja voi muokata tuplaklikkaamalla muokattavan komponentin jotakin saraketta, jonka jälkeen käyttäjä voi syöttää uudet tiedot, sekä muutosten jälkeen painamalla näppäintä _ENTER_ tulee muutokset voimaan. Tämän jälkeen kun käyttäjä painaa painiketta _SAVE_, tallentaa sovellus muutokset myös tietokantaan.
 
 ## Komponenttien lisääminen tietokantaan
-Painamalla painiketta _add item_ voi siirtyä näkymään, jossa on mahdollista lisätä komponentti tietokantaan syöttämällä lomakkeeseen lisättävän komponentin tiedot.  
-Käyttäjä voi halutessaan alustaa lomakkeen painamalla painiketta _clear_.
+Painamalla painiketta _ADD ITEM_ voi siirtyä näkymään, jossa on mahdollista lisätä komponentti tietokantaan syöttämällä lomakkeeseen lisättävän komponentin tiedot.  
+Käyttäjä voi halutessaan alustaa lomakkeen painamalla painiketta _CLEAR_.
