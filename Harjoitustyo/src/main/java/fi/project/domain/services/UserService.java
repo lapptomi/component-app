@@ -136,7 +136,7 @@ public class UserService implements UserDao {
     }
 
     /**
-     * Sets loggedUser null.
+     * Logs out user
      */
     public void logoutUser() {
         loggedUser = null;
