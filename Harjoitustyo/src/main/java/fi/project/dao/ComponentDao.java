@@ -9,6 +9,5 @@ public interface ComponentDao {
     void create(Component component);
     void delete(String serialnumber) throws SQLException, ClassNotFoundException;
     Component getComponent(String serialnumber) throws SQLException, ClassNotFoundException;
-    Component update(String serialnumber);
     List<Component> getAll() throws ClassNotFoundException, SQLException;
 }
