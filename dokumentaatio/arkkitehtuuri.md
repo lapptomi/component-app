@@ -55,6 +55,3 @@ Käyttäjän syöttäessä tiedot lomakkeeseen ja painamalla sign up painiketta 
 # Ohjelman rakenteeseen jääneet heikkoudet
 #### käyttöliittymä
 Käyttöliittymän toiminnallisuudesta huolehtivat controller-luokat sisältävät paljon toistuvaa koodia, jonka voisi korjata luomalla yhteisiä metodeja näille luokille.
-
-#### database-luokka
-Toistaiseksi testejä suorittaessa ei ole järjevää ratkaisua tietokannan suhteen. Tarkoituksena olisi luoda kaksi erillistä tietokantaa, joista toisessa säilyisi tieto, sekä toinen olisi testaamista varten, jossa tieto alustetaan joka kerta ennen testin suorittamista.
