@@ -136,4 +136,25 @@ public class ComponentServiceTest {
         componentService.create(invalidComponent);
         assertEquals(listSizeOnStart, componentService.getAll().size());
     }
+
+    @Test
+    public void componentsCanBeUpdatedOnDatabase() throws SQLException, ClassNotFoundException {
+        List<Component> components = componentService.getAll();
+        Component component1 = components.get(0);
+        Component component2 = components.get(1);
+
+        component1.setManufacturer("Asus");
+        component1.setSerialNumber("123123");
+
+        component2.setManufacturer("Random");
+        component2.setSerialNumber("a1b2c3");
+
+        componentService.saveChanges(components);
+        components = componentService.getAll();
+        assertEquals(components.get(0).getManufacturer(), "Asus");
+        assertEquals(components.get(0).getSerialNumber(), "123123");
+
+        assertEquals(components.get(1).getManufacturer(), "Random");
+        assertEquals(components.get(1).getSerialNumber(), "a1b2c3");
+    }
 }
