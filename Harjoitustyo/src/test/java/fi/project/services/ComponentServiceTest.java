@@ -1,4 +1,4 @@
-package services;
+package fi.project.services;
 
 import fi.project.domain.Component;
 import fi.project.domain.services.ComponentService;

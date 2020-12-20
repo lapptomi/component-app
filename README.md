@@ -10,6 +10,7 @@ Sovelluksen tarkoituksena on toimia varastonhallintajärjestelmänä tietokoneid
 [Vaatimusmäärittely](https://github.com/lapptomi/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)  
 [Työkirjanpito](https://github.com/lapptomi/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)  
 [Arkkitehtuuri](https://github.com/lapptomi/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)  
+[Testausdokumentti](https://github.com/lapptomi/ot-harjoitustyo/blob/master/dokumentaatio/testaus.md)  
 [Käyttöohje](https://github.com/lapptomi/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
 ## Komentorivitoiminnot
