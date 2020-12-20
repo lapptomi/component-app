@@ -33,7 +33,7 @@ Tiedosto löytyy luomisen jälkeen polusta target/Harjoitustyo-1.0-SNAPSHOT.jar
 
 
 ## Releaset
-[Viikko 6](https://github.com/lapptomi/ot-harjoitustyo/releases/tag/viikko6)
+[loppupalautus](https://github.com/lapptomi/ot-harjoitustyo/releases/tag/loppupalautus)
 
 
 ### Testaus
