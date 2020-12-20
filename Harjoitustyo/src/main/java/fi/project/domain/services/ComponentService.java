@@ -38,7 +38,6 @@ public class ComponentService implements ComponentDao {
                     component.getManufacturer(),
                     component.getSerialNumber())
             );
-            System.out.println("Component added to database!");
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Error adding component");
         }
