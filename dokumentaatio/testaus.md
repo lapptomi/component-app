@@ -16,7 +16,7 @@ Sovelluslogiikkakerroksen luokille User ja Component ei ole tehty yksikkötestej
 
 Käyttöliittymäkerrosta lukuunottamatta sovelluksen testauksen rivikattavuus on 86% ja haarautumakattavuus 92%
 
-<img src="https://github.com/lapptomi/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/pic3.png" width="800">
+<img src="https://github.com/lapptomi/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/jacoco.png" width="800">
 
 ## Järjestelmätestaus
 
