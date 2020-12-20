@@ -24,22 +24,26 @@ public class Database {
         }
     }
 
-    public Connection connection(String url) throws ClassNotFoundException {
+    /**
+     * Makes connection to database
+     *
+     * @return Connection to database
+     *
+     */
+    public Connection getConnection() throws ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection(url);
+            connection = DriverManager.getConnection(dbUrl);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return connection;
     }
 
-
-    public Connection getConnection() throws ClassNotFoundException {
-        return this.connection(dbUrl);
-    }
-
+    /**
+     * Initializes database that is made for testing
+     */
     public void initializeTestDatabase() {
         formatTestDb();
         try {
@@ -54,6 +58,9 @@ public class Database {
         }
     }
 
+    /**
+     * Formats database that is made for testing
+     */
     private void formatTestDb() {
         try {
             Statement statement = getConnection().createStatement();
@@ -64,12 +71,18 @@ public class Database {
         }
     }
 
+    /**
+     * Add users to database that is made for testing
+     */
     private void addTestUsersToDatabase() throws ClassNotFoundException, SQLException {
         Statement statement = getConnection().createStatement();
         statement.execute("INSERT INTO Users (username, password) VALUES ('testUser1', 'password1')");
         statement.execute("INSERT INTO Users (username, password) VALUES ('testUser2', 'password2')");
     }
 
+    /**
+     * Add components to database that is made for testing
+     */
     private void addTestComponentsToDatabase() throws ClassNotFoundException, SQLException {
         Statement statement = getConnection().createStatement();
         String query = "INSERT INTO Components (type, model, manufacturer, serialnumber) VALUES ('%s', '%s', '%s', '%s')";
@@ -80,6 +93,9 @@ public class Database {
         statement.execute(String.format(query, "Motherboard", "LGA1151", "Asus", "99sasda9dnf"));
     }
 
+    /**
+     * Deletes test database file
+     */
     public void deleteTestDbFile() {
         Path path = FileSystems.getDefault().getPath(testDatabaseName);
         try {
@@ -89,6 +105,10 @@ public class Database {
         }
     }
 
+    /**
+     * Creates new database with tables for users and components
+     * if database does not exist yet
+     */
     public void initializeDatabase() {
         try {
             Statement statement = getConnection().createStatement();

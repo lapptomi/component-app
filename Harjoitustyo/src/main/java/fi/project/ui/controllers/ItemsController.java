@@ -129,7 +129,7 @@ public class ItemsController implements Initializable {
     }
 
     /**
-     * Saves changes to database if changes are valid
+     * Saves changes on the components to database
      */
     public void handleSaveButtonClick() {
         boolean componentsAreValid = true;
@@ -229,7 +229,7 @@ public class ItemsController implements Initializable {
     }
 
     /**
-     * Checks that parameter values are not empty and type parameter is not null, and that
+     * Checks that component values are not empty and component type is not null, and that
      * serial number does not contain spaces.
      */
     private boolean validCredentials(Component component) {
