@@ -29,6 +29,8 @@ public class Database {
      *
      * @return Connection to database
      *
+     * @throws ClassNotFoundException ClassNotFoundException
+     *
      */
     public Connection getConnection() throws ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
@@ -82,6 +84,9 @@ public class Database {
 
     /**
      * Add components to database that is made for testing
+     *
+     * @throws ClassNotFoundException ClassNotFoundException
+     * @throws SQLException SQLException
      */
     private void addTestComponentsToDatabase() throws ClassNotFoundException, SQLException {
         Statement statement = getConnection().createStatement();

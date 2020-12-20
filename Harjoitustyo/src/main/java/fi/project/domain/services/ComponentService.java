@@ -142,6 +142,8 @@ public class ComponentService implements ComponentDao {
 
     /**
      * Saves updated components to database
+     *
+     * @param components Updated components to add into database
      */
     public void saveChanges(List<Component> components) {
         try {
