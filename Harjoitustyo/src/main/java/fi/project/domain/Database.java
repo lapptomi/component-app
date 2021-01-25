@@ -8,15 +8,14 @@ import java.sql.*;
 
 public class Database {
 
-    private String dbUrl = null;
+    private String dbUrl;
     private final String databaseName = "app.db";
     private final String testDatabaseName = "app-test.db";
 
     public Database() {
         String args = System.getProperty("exec.args") != null
                 ? System.getProperty("exec.args")
-                : "do not run in test mode";
-
+                : "";
         if (args.equals("test")) {
             dbUrl = "jdbc:sqlite:" + testDatabaseName;
         } else {
@@ -25,12 +24,9 @@ public class Database {
     }
 
     /**
-     * Makes connection to database
-     *
-     * @return Connection to database
-     *
+     * Makes connection to the database
+     * @return Connection to the database
      * @throws ClassNotFoundException ClassNotFoundException
-     *
      */
     public Connection getConnection() throws ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
@@ -44,7 +40,7 @@ public class Database {
     }
 
     /**
-     * Initializes database that is made for testing
+     * Initializes database made for testing
      */
     public void initializeTestDatabase() {
         formatTestDb();
@@ -61,7 +57,7 @@ public class Database {
     }
 
     /**
-     * Formats database that is made for testing
+     * Formats database made for testing
      */
     private void formatTestDb() {
         try {
@@ -74,7 +70,7 @@ public class Database {
     }
 
     /**
-     * Add users to database that is made for testing
+     * Add users to the database made for testing
      */
     private void addTestUsersToDatabase() throws ClassNotFoundException, SQLException {
         Statement statement = getConnection().createStatement();
@@ -83,8 +79,7 @@ public class Database {
     }
 
     /**
-     * Add components to database that is made for testing
-     *
+     * Add components to the database made for testing
      * @throws ClassNotFoundException ClassNotFoundException
      * @throws SQLException SQLException
      */
@@ -99,7 +94,7 @@ public class Database {
     }
 
     /**
-     * Deletes test database file
+     * Deletes the test database file
      */
     public void deleteTestDbFile() {
         Path path = FileSystems.getDefault().getPath(testDatabaseName);
@@ -111,8 +106,7 @@ public class Database {
     }
 
     /**
-     * Creates new database with tables for users and components
-     * if database does not exist yet
+     * Creates new database if the database does not exist yet
      */
     public void initializeDatabase() {
         try {
@@ -122,7 +116,7 @@ public class Database {
             System.out.println("Creating Table: Components");
             statement.execute("CREATE TABLE Components (id INTEGER PRIMARY KEY, type TEXT, model TEXT, manufacturer TEXT, serialnumber TEXT UNIQUE)");
         } catch (Exception e) {
-            System.out.println("Database is already existing");
+            System.out.println("Database is already initialized");
         }
     }
 }
