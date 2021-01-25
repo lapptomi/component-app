@@ -140,7 +140,7 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
                <graphic>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD COMPONENT TO DATABASE">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD COMPONENT INTO DATABASE">
                      <font>
                         <Font size="16.0" />
                      </font>
