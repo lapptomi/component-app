@@ -2,7 +2,6 @@ package fi.project.ui.controllers;
 
 import fi.project.domain.services.UserService;
 import fi.project.domain.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +17,7 @@ import java.sql.SQLException;
 
 
 /**
- * This class has the functionality of log in page.
+ * This class has the functionality of the log in page
  */
 public class LoginController {
 
@@ -33,16 +32,14 @@ public class LoginController {
     @FXML
     PasswordField passwordField;
 
-
-    Alert alert = new Alert(Alert.AlertType.ERROR);
+    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
 
     /**
-     * Logs user in if correct credentials are given.
-     * This method is called when log in button is clicked.
-     *
-     * @throws ClassNotFoundException if method loginUser or validCredentials fails.
-     * @throws SQLException if method loginUser or validCredentials fails.
-     * @throws IOException if items.fxml is not found.
+     * Logs the user in if correct credentials are given
+     * This method is called when log in button is clicked
+     * @throws ClassNotFoundException if method loginUser or validCredentials fails
+     * @throws SQLException if method loginUser or validCredentials fails
+     * @throws IOException if items.fxml is not found
      */
     @FXML
     public void handleLoginButtonClick() throws SQLException, ClassNotFoundException, IOException {
@@ -51,9 +48,9 @@ public class LoginController {
         User user = new User(username, password);
 
         if (!userService.validCredentials(user)) {
-            alert.setHeaderText("Invalid username or password.");
-            alert.setContentText("Please try again.");
-            alert.showAndWait();
+            errorAlert.setHeaderText("Invalid username or password.");
+            errorAlert.setContentText("Please try again.");
+            errorAlert.showAndWait();
         } else if (userService.validCredentials(user)) {
             userService.loginUser(user);
         }
@@ -69,8 +66,8 @@ public class LoginController {
     }
 
     /**
-     * Sets scene to register page when sign up button is clicked.
-     * @throws IOException if register.fxml is not found.
+     * Sets scene to the register page when the sign up button is clicked
+     * @throws IOException if register.fxml is not found
      */
     public void handleRegisterButtonClick() throws IOException {
         Stage stage = (Stage) registerButton.getScene().getWindow();

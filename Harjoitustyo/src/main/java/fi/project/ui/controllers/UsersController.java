@@ -1,8 +1,6 @@
 package fi.project.ui.controllers;
 
-import fi.project.domain.Component;
 import fi.project.domain.User;
-import fi.project.domain.services.ComponentService;
 import fi.project.domain.services.UserService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,10 +20,13 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * This class has the functionality of the users page
+ */
 public class UsersController implements Initializable {
 
     private UserService userService = new UserService();
-    private Alert logoutAlert = new Alert(Alert.AlertType.CONFIRMATION);
+    private Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
 
     @FXML
     Text userLoggedInText;
@@ -42,8 +43,7 @@ public class UsersController implements Initializable {
     TableColumn<User, String> usernameColumn;
 
     /**
-     * Changes scene to add items page.
-     *
+     * Changes scene to the add items page.
      * @throws IOException if addItem.fxml is not found.
      */
     public void handleAddItemButtonClick() throws IOException {
@@ -54,14 +54,13 @@ public class UsersController implements Initializable {
     }
 
     /**
-     * Logs out user and sets scene to login page.
-     *
+     * Logs out the user and sets scene to the login page.
      * @throws IOException if login.fxml is not found.
      */
     public void handleLogoutButtonClick() throws IOException {
-        logoutAlert.setTitle("Sign out");
-        logoutAlert.setHeaderText("Are you sure you want to sign out?");
-        Optional<ButtonType> result = logoutAlert.showAndWait();
+        confirmationAlert.setTitle("Sign out");
+        confirmationAlert.setHeaderText("Are you sure you want to sign out?");
+        Optional<ButtonType> result = confirmationAlert.showAndWait();
 
         if (result.get() == ButtonType.OK) {
             userService.logoutUser();
@@ -72,9 +71,8 @@ public class UsersController implements Initializable {
     }
 
     /**
-     * Changes scene to items page when items button is clicked.
-     *
-     * @throws IOException if items.fxml is not found.
+     * Changes scene to the items page when the items button is clicked
+     * @throws IOException if items.fxml is not found
      */
     public void handleItemsButtonClick() throws IOException {
         Stage stage = (Stage) itemsButton.getScene().getWindow();
@@ -84,15 +82,13 @@ public class UsersController implements Initializable {
     }
 
     /**
-     * Initializes component table and adds components from database to it
+     * Initializes the component table and adds components from the database to it
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String text = "Logged in as: " + UserService.loggedUser;
         userLoggedInText.setText(text);
-
         usernameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
-
         initializeUsersTable();
     }
 

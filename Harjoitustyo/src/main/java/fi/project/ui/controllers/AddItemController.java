@@ -19,15 +19,15 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
- * This class has the functionality of add item page.
+ * This class has the functionality of the add item page
  */
 public class AddItemController implements Initializable {
 
     private UserService userService = new UserService();
     private ComponentService componentService = new ComponentService();
-    private Alert logoutAlert = new Alert(Alert.AlertType.CONFIRMATION);
-    private Alert componentCreatedAlert = new Alert(Alert.AlertType.INFORMATION);
-    private Alert errorCreatingComponentAlert = new Alert(Alert.AlertType.ERROR);
+    private Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+    private Alert informationAlert = new Alert(Alert.AlertType.INFORMATION);
+    private Alert errorAlert = new Alert(Alert.AlertType.ERROR);
 
     @FXML
     Text userLoggedInText;
@@ -52,15 +52,13 @@ public class AddItemController implements Initializable {
     ComboBox<String> componentTypeBox;
 
     /**
-     * Logs out user and sets scene to login page.
-     *
-     * @throws IOException if login.fxml is not found.
+     * Logs out the user and sets scene to the login page
+     * @throws IOException if login.fxml is not found
      */
     public void handleLogoutButtonClick() throws IOException {
-        logoutAlert.setTitle("Sign out");
-        logoutAlert.setHeaderText("Are you sure you want to sign out?");
-        Optional<ButtonType> result = logoutAlert.showAndWait();
-
+        confirmationAlert.setTitle("Sign out");
+        confirmationAlert.setHeaderText("Are you sure you want to sign out?");
+        Optional<ButtonType> result = confirmationAlert.showAndWait();
         if (result.get() == ButtonType.OK) {
             userService.logoutUser();
             Stage stage = (Stage) logoutButton.getScene().getWindow();
@@ -70,7 +68,7 @@ public class AddItemController implements Initializable {
     }
 
     /**
-     * Clears all fields when clear button is clicked.
+     * Clears all fields when the clear button is clicked
      */
     public void handleClearButtonClick() {
         componentTypeBox.setValue("Type");
@@ -80,9 +78,8 @@ public class AddItemController implements Initializable {
     }
 
     /**
-     * Changes scene to items page when items button is clicked.
-     *
-     * @throws IOException if items.fxml is not found.
+     * Changes scene to the items page when the items button is clicked
+     * @throws IOException if items.fxml is not found
      */
     public void handleItemsButtonClick() throws IOException {
         Stage stage = (Stage) itemsButton.getScene().getWindow();
@@ -92,8 +89,7 @@ public class AddItemController implements Initializable {
     }
 
     /**
-     * Changes scene to users page.
-     *
+     * Changes scene to the users page when the users button is clicked
      * @throws IOException if addItem.fxml is not found.
      */
     public void handleUsersButtonClick() throws IOException {
@@ -104,43 +100,48 @@ public class AddItemController implements Initializable {
     }
 
     /**
-     * Adds new component to database when add item button is clicked.
+     * Checks that values given as parameters valid
+     */
+    private boolean validCredentials(Component component) {
+        return component.getType() != null
+                && component.getModel().length() > 0
+                && component.getManufacturer().length() > 0
+                && component.getSerialNumber().length() > 0
+                && !component.getSerialNumber().contains(" ");
+    }
+
+    /**
+     * Adds new component to the database when the add item button is clicked
      */
     public void handleAddItemButtonClick() {
         String type = componentTypeBox.getItems().contains(componentTypeBox.getValue())
-                ? componentTypeBox.getValue() : null;
+                ? componentTypeBox.getValue()
+                : null;
         String model = modelTextField.getText();
         String manufacturer = manufacturerTextField.getText();
         String serialNumber = serialNumberTextField.getText();
 
-        if (validCredentials(type, model, manufacturer, serialNumber)) {
+        Component componentToAdd = new Component(type, model, manufacturer, serialNumber);
+        if (validCredentials(componentToAdd)) {
             Component newComponent = new Component(type, model, manufacturer, serialNumber);
             componentService.create(newComponent);
-            componentCreatedAlert.setHeaderText("Component added to database!");
+            informationAlert.setHeaderText("Component added to database!");
             handleClearButtonClick();
-            componentCreatedAlert.showAndWait();
+            informationAlert.showAndWait();
         } else {
-            errorCreatingComponentAlert.setHeaderText("Error adding component to database!");
-            errorCreatingComponentAlert.setContentText("Please try again.");
-            errorCreatingComponentAlert.showAndWait();
+            errorAlert.setHeaderText("Error adding component to database!");
+            errorAlert.setContentText("Please try again.");
+            errorAlert.showAndWait();
         }
     }
 
     /**
-     * Checks that parameter values are not empty and type parameter is not null, and that
-     * serial number does not contain spaces.
-     */
-    private boolean validCredentials(String type, String model, String manufacturer, String serialNumber) {
-        return type != null && model.length() > 0 && manufacturer.length() > 0 && serialNumber.length() > 0 && !serialNumber.contains(" ");
-    }
-
-    /**
-     * Sets component type values to combo box.
+     * Sets component type values to combo box
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userLoggedInText.setText("Logged in as: " + UserService.loggedUser);
-        String[] componentTypes = {"CPU", "GPU", "HDD", "Motherboard", "PSU", "RAM", "SSD"};
+        String[] componentTypes = { "CPU", "GPU", "HDD", "Motherboard", "PSU", "RAM", "SSD" };
         componentTypeBox.setItems(FXCollections.observableArrayList(componentTypes));
     }
 }

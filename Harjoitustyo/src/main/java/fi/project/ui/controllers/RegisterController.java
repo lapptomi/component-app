@@ -17,9 +17,11 @@ import java.sql.SQLException;
 
 
 /**
- * This class has the functionality of register page.
+ * This class has the functionality of the register page
  */
 public class RegisterController {
+
+    private UserService userService = new UserService();
 
     @FXML
     Button returnButton;
@@ -30,15 +32,12 @@ public class RegisterController {
     @FXML
     PasswordField passwordField;
 
-    private final UserService userService = new UserService();
-
-    Alert invalidCredentialsAlert = new Alert(Alert.AlertType.ERROR);
-    Alert userCreatedAlert = new Alert(Alert.AlertType.INFORMATION);
+    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+    Alert informationAlert = new Alert(Alert.AlertType.INFORMATION);
 
     /**
-     * Sets scene to log in page when return button is clicked.
-     *
-     * @throws IOException if login.fxml is not found.
+     * Sets scene to the log in page when the return button is clicked
+     * @throws IOException if login.fxml is not found
      */
     public void handleReturnButtonClick() throws IOException {
         Stage stage = (Stage) returnButton.getScene().getWindow();;
@@ -48,7 +47,7 @@ public class RegisterController {
     }
 
     /**
-     * Adds new user to database when sign up button is clicked
+     * Adds new user to the database when the sign up button is clicked
      * if valid credentials are given
      * @throws SQLException if method getUser throws exception.
      * @throws ClassNotFoundException if method getUser throws exception.
@@ -56,23 +55,22 @@ public class RegisterController {
     public void handleSignUpButtonClick() throws SQLException, ClassNotFoundException {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        boolean usernameIsNotUnique = userService.getUser(username) != null;
 
-        invalidCredentialsAlert.setTitle("Error");
-        invalidCredentialsAlert.setContentText("Please try again.");
+        errorAlert.setTitle("Error");
+        errorAlert.setContentText("Please try again.");
 
         if (username.length() < 4 || password.length() < 6) {
-            invalidCredentialsAlert.setHeaderText("Username or password too short.");
-            invalidCredentialsAlert.showAndWait();
-        } else if (usernameIsNotUnique) {
-            invalidCredentialsAlert.setHeaderText("Username " + username + " is already taken.");
-            invalidCredentialsAlert.showAndWait();
+            errorAlert.setHeaderText("Username or password too short.");
+            errorAlert.showAndWait();
+        } else if (userService.getUser(username) != null) {
+            errorAlert.setHeaderText("Username " + username + " is already taken.");
+            errorAlert.showAndWait();
         } else {
             userService.create(new User(username, password));
-            userCreatedAlert.setHeaderText("New user " + username + " created!");
+            informationAlert.setHeaderText("New user " + username + " created!");
             usernameField.clear();
             passwordField.clear();
-            userCreatedAlert.showAndWait();
+            informationAlert.showAndWait();
         }
     }
 }

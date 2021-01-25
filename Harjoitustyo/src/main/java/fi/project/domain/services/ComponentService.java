@@ -11,16 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class has methods to add, remove, edit, get and validate components.
+ * This class has methods to add, remove, edit, get and validate components
  */
 public class ComponentService implements ComponentDao {
 
     private Database database = new Database();
 
     /**
-     * Adds new component to database.
-     *
-     * @param component Component to add into database
+     * Adds new component to the database.
+     * @param component Component to add to the database
      */
     @Override
     public void create(Component component) {
@@ -44,13 +43,10 @@ public class ComponentService implements ComponentDao {
     }
 
     /**
-     * Deletes component from database if component with serial number
-     * given exists.
-     *
-     * @param serialnumber Serial number given by user
-     *
-     * @throws ClassNotFoundException if method getComponent throws exception.
-     * @throws SQLException if method getComponent throws exception.
+     * Deletes component from the database if the component with serial number given exists
+     * @param serialnumber Serial number given by the user
+     * @throws ClassNotFoundException if method getComponent throws exception
+     * @throws SQLException if method getComponent throws exception
      */
     @Override
     public void delete(String serialnumber) throws SQLException, ClassNotFoundException {
@@ -68,11 +64,8 @@ public class ComponentService implements ComponentDao {
     }
 
     /**
-     * Makes sure that component does not have any empty or null values
-     * and serial number does not contain spaces.
-     *
+     * Checks that the component is valid
      * @param component Component to validate
-     *
      * @return True if component is valid, else returns false
      */
     public boolean componentIsValid(Component component) {
@@ -91,15 +84,12 @@ public class ComponentService implements ComponentDao {
     }
 
     /**
-     * Finds component from database by serial number given as parameter.
-     *
-     * @param serialnumber Input given by user
-     *
-     * @return Component that was found,
-     * or null if component with given serial number does not exist
-     *
-     * @throws ClassNotFoundException if method getAll throws exception.
-     * @throws SQLException if method getAll throws exception.
+     * Finds component from the database by the serial number given as parameter
+     * @param serialnumber Input given by the user
+     * @return Component that was found
+     * or null if component with the serial number given does not exist
+     * @throws ClassNotFoundException if method getAll throws exception
+     * @throws SQLException if method getAll throws exception
      */
     @Override
     public Component getComponent(String serialnumber) throws SQLException, ClassNotFoundException {
@@ -114,12 +104,10 @@ public class ComponentService implements ComponentDao {
     }
 
     /**
-     * Gets all components from database.
-     *
-     * @return List of components found from database
-     *
-     * @throws ClassNotFoundException if getConnection throws exception.
-     * @throws SQLException if getConnection throws exception.
+     * Gets all components from the database.
+     * @return List of components found from the database
+     * @throws ClassNotFoundException if getConnection throws exception
+     * @throws SQLException if getConnection throws exception
      */
     @Override
     public List<Component> getAll() throws SQLException, ClassNotFoundException {
@@ -141,8 +129,7 @@ public class ComponentService implements ComponentDao {
     }
 
     /**
-     * Saves updated components to database
-     *
+     * Saves updated components to the database
      * @param components Updated components to add into database
      */
     public void saveChanges(List<Component> components) {

@@ -20,7 +20,6 @@ public class AppUi extends Application {
     public void init() {
         this.userService = new UserService();
         this.database = new Database();
-
         database.deleteTestDbFile();
         database.initializeDatabase();
     }

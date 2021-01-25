@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class has methods to add, remove, edit, get and validate users.
+ * This class has methods to add, remove, edit, get and validate users
  */
 public class UserService implements UserDao {
 
@@ -23,10 +23,8 @@ public class UserService implements UserDao {
     }
 
     /**
-     * Adds new user to database
-     *
+     * Adds new user to the database
      * @param user User to add into database
-     *
      */
     @Override
     public void create(User user) {
@@ -44,12 +42,10 @@ public class UserService implements UserDao {
     }
 
     /**
-     * Gets user from database by username.
-     *
+     * Gets user from the database by the username given as parameter
      * @param username Input given by user
-     *
-     * @throws ClassNotFoundException if method getAll throws exception.
-     * @throws SQLException if method getAll throws exception.
+     * @throws ClassNotFoundException if method getAll throws exception
+     * @throws SQLException if method getAll throws exception
      */
     @Override
     public User getUser(String username) throws SQLException, ClassNotFoundException {
@@ -63,18 +59,11 @@ public class UserService implements UserDao {
         return user;
     }
 
-    @Override
-    public User update(String username) {
-        return null;
-    }
-
     /**
-     * Gets all users from database.
-     *
-     * @return List of users found from database
-     *
-     * @throws ClassNotFoundException if getConnection throws exception.
-     * @throws SQLException if getConnection throws exception.
+     * Gets all users from the database.
+     * @return List of users found from the database
+     * @throws ClassNotFoundException if getConnection throws exception
+     * @throws SQLException if getConnection throws exception
      */
     @Override
     public List<User> getAll() throws ClassNotFoundException, SQLException {
@@ -94,14 +83,11 @@ public class UserService implements UserDao {
     }
 
     /**
-     * Verifies that user exists and has correct username and password.
-     *
+     * Verifies that the user exists and has correct username and password
      * @param userToCheck User to verify
-     *
      * @return True if user exists and has correct credentials, else returns false
-     *
-     * @throws ClassNotFoundException if method getUser throws exception.
-     * @throws SQLException if method getUser throws exception.
+     * @throws ClassNotFoundException if method getUser throws exception
+     * @throws SQLException if method getUser throws exception
      */
     public boolean validCredentials(User userToCheck) throws SQLException, ClassNotFoundException {
         User user = getUser(userToCheck.getUsername());
@@ -109,25 +95,20 @@ public class UserService implements UserDao {
             System.out.println("User does not exist.");
             return false;
         }
-
         boolean usernameIsCorrect = userToCheck.getUsername().equals(user.getUsername());
         boolean passwordIsCorrect = userToCheck.getPassword().equals(user.getPassword());
-
         if (usernameIsCorrect && passwordIsCorrect) {
             return true;
         }
-
         System.out.println("Invalid username or password.");
         return false;
     }
 
     /**
-     * Logs user in if the user given as parameter has correct credentials.
-     *
+     * Logs the user in if the user given as parameter has correct credentials
      * @param user User to log in
-     *
-     * @throws ClassNotFoundException if method validCredentials throws exception.
-     * @throws SQLException if method validCredentials throws exception.
+     * @throws ClassNotFoundException if method validCredentials throws exception
+     * @throws SQLException if method validCredentials throws exception
      */
     public void loginUser(User user) throws SQLException, ClassNotFoundException {
         if (validCredentials(user)) {
@@ -136,7 +117,7 @@ public class UserService implements UserDao {
     }
 
     /**
-     * Logs out user
+     * Logs out the user
      */
     public void logoutUser() {
         loggedUser = null;

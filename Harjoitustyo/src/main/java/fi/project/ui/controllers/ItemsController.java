@@ -25,16 +25,14 @@ import java.util.ResourceBundle;
 
 
 /**
- * This class has the functionality of items page.
+ * This class has the functionality of the items page
  */
 public class ItemsController implements Initializable {
 
     private UserService userService = new UserService();
     private ComponentService componentService = new ComponentService();
-    private Alert logoutAlert = new Alert(Alert.AlertType.CONFIRMATION);
+    private Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
     private Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-    private Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
-
 
     @FXML
     Text userLoggedInText;
@@ -87,15 +85,13 @@ public class ItemsController implements Initializable {
     }
 
     /**
-     * Logs out user and sets scene to login page.
-     *
+     * Logs out the user and sets the scene to the login page.
      * @throws IOException if login.fxml is not found.
      */
     public void handleLogoutButtonClick() throws IOException {
-        logoutAlert.setTitle("Sign out");
-        logoutAlert.setHeaderText("Are you sure you want to sign out?");
-        Optional<ButtonType> result = logoutAlert.showAndWait();
-
+        confirmationAlert.setTitle("Sign out");
+        confirmationAlert.setHeaderText("Are you sure you want to sign out?");
+        Optional<ButtonType> result = confirmationAlert.showAndWait();
         if (result.get() == ButtonType.OK) {
             userService.logoutUser();
             Stage stage = (Stage) logoutButton.getScene().getWindow();
@@ -105,7 +101,7 @@ public class ItemsController implements Initializable {
     }
 
     /**
-     * Removes selected component from database
+     * Removes selected component from the database
      */
     public void handleRemoveButtonClick() {
         Component component = componentTable.getSelectionModel().getSelectedItem();
@@ -115,9 +111,8 @@ public class ItemsController implements Initializable {
             errorAlert.showAndWait();
             return;
         }
-
-        confirmAlert.setHeaderText("Are you sure you want to remove this component?");
-        Optional<ButtonType> result = confirmAlert.showAndWait();
+        confirmationAlert.setHeaderText("Are you sure you want to remove this component?");
+        Optional<ButtonType> result = confirmationAlert.showAndWait();
         if (result.get() == ButtonType.OK) {
             try {
                 componentService.delete(component.getSerialNumber());
@@ -129,12 +124,22 @@ public class ItemsController implements Initializable {
     }
 
     /**
-     * Saves changes on the components to database
+     * Checks that the component values are valid
+     */
+    private boolean validCredentials(Component component) {
+        return component.getType() != null
+                && component.getModel().length() > 0
+                && component.getManufacturer().length() > 0
+                && component.getSerialNumber().length() > 0
+                && !component.getSerialNumber().contains(" ");
+    }
+
+    /**
+     * Saves the changes on the components to the database
      */
     public void handleSaveButtonClick() {
         boolean componentsAreValid = true;
         List<Component> components = componentTable.getItems();
-
         for (Component component : components) {
             if (!validCredentials(component)) {
                 componentsAreValid = false;
@@ -142,8 +147,8 @@ public class ItemsController implements Initializable {
             }
         }
 
-        confirmAlert.setHeaderText("Save changes?");
-        Optional<ButtonType> result = confirmAlert.showAndWait();
+        confirmationAlert.setHeaderText("Save changes?");
+        Optional<ButtonType> result = confirmationAlert.showAndWait();
         if (result.get() == ButtonType.OK && componentsAreValid) {
             componentService.saveChanges(components);
         } else {
@@ -155,18 +160,15 @@ public class ItemsController implements Initializable {
     }
 
     /**
-     * Initializes component table and adds components from database to it
+     * Initializes the component table and adds components from the database to it
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String text = "Logged in as: " + UserService.loggedUser;
-        userLoggedInText.setText(text);
-
+        userLoggedInText.setText("Logged in as: " + UserService.loggedUser);
         initTypeColumn();
         initModelColumn();
         initManufacturerColumn();
         initSerialNumberColumn();
-
         initializeComponentTable();
     }
 
@@ -226,17 +228,5 @@ public class ItemsController implements Initializable {
                 ).setSerialNumber(t.getNewValue());
             }
         );
-    }
-
-    /**
-     * Checks that component values are not empty and component type is not null, and that
-     * serial number does not contain spaces.
-     */
-    private boolean validCredentials(Component component) {
-        return component.getType() != null
-                && component.getModel().length() > 0
-                && component.getManufacturer().length() > 0
-                && component.getSerialNumber().length() > 0
-                && !component.getSerialNumber().contains(" ");
     }
 }
